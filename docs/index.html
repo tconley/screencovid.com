@@ -1,1 +1,239 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>ScreenCovid.com</title>
+<style>
+.symptondescr {
+  font-weight: bold;
+  COLOR: #000;
+}
+
+#container {
+  width: 500px;
+  margin: auto !important;
+  display: block;
+  height: 500px;
+  position: relative;
+  list-style-type: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.buddy {
+  text-align: center;
+  display: none;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  color: #000;
+  padding: 20px;
+  width: 360px;
+  height: 360px;
+  top: 50px;
+  left: 50px;
+  position: absolute;
+  cursor: hand;
+}
+.rotate-left {
+  transform: rotate(30deg) scale(0.8);
+  transition: 1s;
+  margin-left: 400px;
+  cursor: e-resize;
+  opacity: 0;
+  z-index: 10;
+}
+.rotate-right {
+  transform: rotate(-30deg) scale(0.8);
+  transition: 1s;
+  opacity: 0;
+  margin-left: -400px;
+  cursor: w-resize;
+  z-index: 10;
+}
+.avatar {
+  background: #222;
+  width: 340px;
+  height: 340px;
+  display: block;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-size: auto 160% !important;
+  background-position: center;
+ background-repeat: no-repeat;
+}
+.like {
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 2px solid green;
+  color: green;
+  text-transform: uppercase;
+  font-size: 15px;
+  position: absolute;
+  top: 50px;
+  right: 40px;
+  text-shadow: none;
+}
+.dislike {
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 2px solid red;
+  color: red;
+  text-transform: uppercase;
+  font-size: 15px;
+  position: absolute;
+  top: 50px;
+  left: 40px;
+  text-shadow: none;
+}
+
+#total {
+  /*margin: auto !important;*/
+  /* position: fixed; /* or absolute */
+  text-align: center;
+  padding-top: 15px;
+  font-size: 3em;
+}
+
+#totaldescr {
+  text-align: center;
+  
+  padding-top: 25px;
+  font-size: 1.3em;
+}
+
+#footer {
+  text-align: center;
+  
+  padding-top: 25px;
+  font-size: 1.3em;
+}
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+</head>
+<body>
+<div id="totaldescr">
+If the total exceeds 212, consult a doctor immediately
+</div>
+<div id="total" class="total">
+</div>
+<div id="container">
+<div class="buddy" style="display: block;" value="90.5">
+<div class="symptondescr">Fever Above 37.8C/100F?</div>
+<div class="avatar" style="display: block; background-image: url(https://storage.needpix.com/rsynced_images/catch-a-cold-3893262_1280.png)"></div></div>
+<div class="buddy" value="70.5">
+<div class="symptondescr">Dry Cough?</div>
+<div class="avatar" style="display: block; background-image: url(https://live.staticflickr.com/8519/8577590928_c37f0cbb99_b.jpg)"></div></div>
+<div class="buddy" value="53.5">
+<div class="symptondescr">Fatigue?</div>
+<div class="avatar" style="display: block; "></div></div>
+<div class="buddy" value="40">
+<div class="symptondescr">No appetite?</div>
+<div class="avatar" style="display: block; "></div></div>
+<div class="buddy" value="135">
+<div class="symptondescr">Breathing Difficulty?</div>
+<div class="avatar" style="display: block; "></div></div>
+<div class="buddy" value="29.5">
+<div class="symptondescr">Sputum?</div>
+<div class="avatar" style="display: block;"></div></div>
+<div class="buddy" value="27.5">
+<div class="symptondescr">Muscle or bone pain?</div>
+<div class="avatar" style="display: block; "></div></div>
+<div class="buddy" value="11">
+<div class="symptondescr">Sore throat?</div>
+<div class="avatar" style="display: block; "></div></div>
+<div class="buddy" value="10">
+<div class="symptondescr">Headache or dizziness?</div>
+<div class="avatar" style="display: block; "></div></div>
+<div class="buddy" value="100">
+<div class="symptondescr">Confusion?</div>
+<div class="avatar" style="display: block; "></div></div>
+<div class="buddy" value="11">
+<div class="symptondescr">Chills?</div>
+<div class="avatar" style="display: block; "></div></div>
+<div class="buddy" value="9">
+<div class="symptondescr">Nausea or vomiting or diarrhea?</div>
+<div class="avatar" style="display: block; "></div></div>
+<div class="buddy" value="51.9">
+<div class="symptondescr">Chronic disease ?</div>
+<div class="avatar" style=""></div></div>
+<div class="buddy" value="100">
+<div class="symptondescr">Chest pain or chest pressure or irregular heartbeat</div>
+<div class="avatar" style="display: block; "></div></div>
+<div class="buddy" value="100">
+<div class="symptondescr">Bluish lips or face?</div>
+<div class="avatar" style="display: block; "></div></div>
+<div class="buddy" value="51.9">
+<div class="symptondescr">Older than 60 years old?</div>
+<div class="avatar" style="display: block; "></div></div>
+</div>
+<div id="footer" class="footer">
+<p>Algorithm created by Sajung Yun, Ph.D. (Bioformatics adjunct professor, Johns Hopkins University)<p>
+<p>More info at <a href="https://www.screencovid.org">ScreenCovid.org</a></p>
+<p><a href="https://github.com/tconley/screencovid.com/"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="50">Contribute to make this app better.</a><p>
+</div>
+</body>
+</html>
+
+<script id="rendered-js">
+$(document).ready(function () {
+  var totalscore = 0;
+  $("#total").text(totalscore);
+  $(".buddy").on("swiperight", function () {
+    totalscore = totalscore + parseFloat($(this).attr('value'));
+    $("#total").text(totalscore);
+    $(this).addClass('rotate-left').delay(700).fadeOut(1);
+    $('.buddy').find('.status').remove();
+
+    $(this).append('<div class="status like">Yes!</div>');
+    if ($(this).is(':last-child')) {
+      //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
+      //alert('message here that we are done');
+      //after survey is done additional messages should be displayed about next steps
+    } else {
+      $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
+    }
+
+
+
+  });
+
+  $(".buddy").on("swipeleft", function () {
+    $(this).addClass('rotate-right').delay(700).fadeOut(1);
+    $('.buddy').find('.status').remove();
+    $(this).append('<div class="status dislike">No!</div>');
+
+    if ($(this).is(':last-child')) {
+      //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
+      //alert('message here that we are done');
+      //after survey is done additional messages should be displayed about next steps
+    } else {
+      $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
+    }
+  });
+
+});
+//# sourceURL=pen.js
+    </script>
+</body>
+</html>
