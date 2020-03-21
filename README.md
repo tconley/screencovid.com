@@ -17,7 +17,7 @@ You can view his findings and rationale behind the screening at https://github.c
 
 #Recommendations based on symptoms
 There are 3 thresholds listed in the PDF. Dr. Yun is consulting with the medical community about these 3 tiers, so for now he wants to advise any score greater than 212 to consult with a doctor.  Regardless, app should have functionality for the 3 different alert levels, as that will be decided upon in the next few days.
-* > 212 = Doctor consultation
-* > 260 = COVID-19 Testing recommended
-* > 316.4 = Fast-Track COVID-19 testing
+* \> 212 = Doctor consultation
+* \> = COVID-19 Testing recommended
+* \> 316.4 = Fast-Track COVID-19 testing
 
