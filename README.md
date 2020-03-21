@@ -1,4 +1,7 @@
 # screencovid.com
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Please contribute! This project is based off a phone call I had with Sajung Yun, PhD. He is very much interested in saving lives, and has analyzed the data available to come up with a simple formula for a screener.  He created a screening tool, but it wasn't a mobile friendly UX. You can see what he's put together at https://www.screencovid.org/ . The goal is to get this tool production ready by Mon 3/23 so Dr. Yun can share with the media. 
 
@@ -22,3 +25,22 @@ There are 3 thresholds listed in the PDF. Dr. Yun is consulting with the medical
 * \> 260 = COVID-19 Testing recommended
 * \> 316.4 = Fast-Track COVID-19 testing
 
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://tooomuch.info"><img src="https://avatars0.githubusercontent.com/u/1176471?v=4" width="100px;" alt=""/><br /><sub><b>developingidea</b></sub></a><br /><a href="https://github.com/tconley/screencovid.com/commits?author=developingidea" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
