@@ -11,7 +11,8 @@ You can view his findings and rationale behind the screening at https://github.c
 # How can you help?
 * Images (free for public use) for each symptom
 * enhance the UX so users can also click YES/NO on the edges of the swipe area
-* Alert the user when they are over the 212 threshold
+* ability to go back to the previous question
+* visually alert the user when they are over the 212 threshold
 * anything else you have in mind!
 * create a contributors page to give credit to anyone that helps
 
