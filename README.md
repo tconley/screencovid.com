@@ -5,8 +5,8 @@
 
 Please contribute! This project is based off a phone call I had with Sajung Yun, PhD. He is very much interested in saving lives, and has analyzed the data available to come up with a simple formula for a screener.  He created a screening tool, but it wasn't a mobile friendly UX. You can see what he's put together at https://www.screencovid.org/ . The goal is to get this tool production ready by Mon 3/23 so Dr. Yun can share with the media. 
 
-# ScreenCovid.com Go-Live Mon March 23
-Monday 3/23 the screencovid.com domain will be pointed here to github static hosting - so the live site will be pulled from the /docs folder in this repository - view it now at https://tconley.github.io/screencovid.com/
+# ScreenCovid.com 
+Site is using github hosting and is pulled from the /docs folder
 
 You can view Dr Yun's findings and rationale behind the screening at https://github.com/tconley/screencovid.com/raw/master/Presentation_Prescreencovid_v9_03202020.pdf
 
