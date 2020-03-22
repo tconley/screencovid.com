@@ -31,6 +31,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "tconley",
+      "name": "Todd Conley",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1893207?v=4",
+      "profile": "https://github.com/tconley",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
