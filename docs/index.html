@@ -1,308 +1,261 @@
 <!DOCTYPE html>
+
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161530831-1"></script>
   <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'UA-161530831-1');
-  </script>  
-<meta charset="UTF-8">
-<title>ScreenCovid.com</title>
-  
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script> 
-  
-<style>
+    gtag('config', 'UA-161530831-1');
+  </script>
+  <meta charset="UTF-8">
+  <title>ScreenCovid.com</title>
 
- .symptomdescr {
-  font-weight: bold;
-  COLOR: #000;
-   /*padding: 8px;*/
-   padding: 8px 0 14px 0;
-   margin: auto;
-   max-width: 500px;
-}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.min.js"
+    integrity="sha256-MPgtcamIpCPKRRm1ppJHkvtNBAuE71xcOM+MmQytXi8=" crossorigin="anonymous"></script>
+
+  <style>
+    .symptomdescr {
+      font-weight: bold;
+      COLOR: #000;
+      /*padding: 8px;*/
+      padding: 8px 0 14px 0;
+      margin: auto;
+      max-width: 500px;
+    }
 
 
 
-#container {
-  width: 100%;
-  margin: auto !important;
-  display: block;
-  height: 480px;
-  position: relative;
-  list-style-type: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  /*padding: 5px;*/
-}
-.buddy {
-  text-align: center;
-  display: none;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  color: #000;
-  width: -webkit-fill-available;
-  padding: 10px; 
-  /* margin-left: 10px; */
-  margin: 10px auto;
-  height: auto;
-  max-width: 375px;
-  /* top: 50px; */
-  /* left: 50px; */
-  position: absolute;
-  left: 0;
-  right: 0;
-  cursor: hand;
-}
+    #container {
+      width: 100%;
+      margin: auto !important;
+      display: block;
+      height: 480px;
+      position: relative;
+      list-style-type: none;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      /*padding: 5px;*/
+    }
 
-.results {
-  text-align: center;
-  display: none;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  color: #000;
-  width: -webkit-fill-available;
-  padding: 10px; 
-  /* margin-left: 10px; */
-  margin: 10px auto;
-  height: auto;
-  max-width: 375px;
-  /* top: 50px; */
-  /* left: 50px; */
-  position: absolute;
-  left: 0;
-  right: 0;
-  cursor: hand;
-}
+    .buddy {
+      text-align: center;
+      display: none;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      color: #000;
+      width: -webkit-fill-available;
+      padding: 10px;
+      /* margin-left: 10px; */
+      margin: 10px auto;
+      height: auto;
+      max-width: 375px;
+      /* top: 50px; */
+      /* left: 50px; */
+      position: absolute;
+      left: 0;
+      right: 0;
+      cursor: hand;
+    }
 
-.rotate-left {
-  transform: rotate(30deg) scale(0.8);
-  transition: 1s;
-  /*margin-left: 400px;*/
-  cursor: e-resize;
-  opacity: 0;
-  z-index: 10;
-}
-.rotate-right {
-  transform: rotate(-30deg) scale(0.8);
-  transition: 1s;
-  opacity: 0;
-  /*margin-left: -400px;*/
-  cursor: w-resize;
-  z-index: 10;
-}
-.avatar {
-  background: #222;
-  width: -webkit-fill-available;
-  height: 340px;
-  display: block;
-  /*margin-top: 10px;*/
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 10px;
-  background-size: auto 160% !important;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.like {
-  border-radius: 5px;
-  padding: 5px 10px;
-  border: 2px solid green;
-  color: green;
-  text-transform: uppercase;
-  font-size: 15px;
-  position: absolute;
-  top: 50px;
-  right: 40px;
-  text-shadow: none;
-}
-.dislike {
-  border-radius: 5px;
-  padding: 5px 10px;
-  border: 2px solid red;
-  color: red;
-  text-transform: uppercase;
-  font-size: 15px;
-  position: absolute;
-  top: 50px;
-  left: 40px;
-  text-shadow: none;
-}
+    .results {
+      text-align: center;
+      display: none;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      color: #000;
+      width: -webkit-fill-available;
+      padding: 10px;
+      /* margin-left: 10px; */
+      margin: 10px auto;
+      height: auto;
+      max-width: 375px;
+      /* top: 50px; */
+      /* left: 50px; */
+      position: absolute;
+      left: 0;
+      right: 0;
+      cursor: hand;
+      font-size: 1.5em;
+    }
 
-#total {
-  /*margin: auto !important;*/
-  /* position: fixed; /* or absolute */
-  text-align: center;
-  font-size: 2em;
-}
+    .rotate-left {
+      transform: rotate(30deg) scale(0.8);
+      transition: 1s;
+      /*margin-left: 400px;*/
+      cursor: e-resize;
+      opacity: 0;
+      z-index: 10;
+    }
 
-#totaldescr {
-  text-align: center;
-  padding-top: 25px;
-  /* font-size: 1.3em; */
-}
-  
-  #instructions {
-  text-align: center;
-  
-  padding-top: 25px;
-  font-size: 1.3em;
-}
+    .rotate-right {
+      transform: rotate(-30deg) scale(0.8);
+      transition: 1s;
+      opacity: 0;
+      /*margin-left: -400px;*/
+      cursor: w-resize;
+      z-index: 10;
+    }
 
-#footer {
-  text-align: center;
-  padding: 10px;
-  font-size: 1em;
-}
+    .avatar {
+      background: #222;
+      width: -webkit-fill-available;
+      height: 340px;
+      display: block;
+      /*margin-top: 10px;*/
+      margin-left: 5px;
+      margin-right: 5px;
+      margin-bottom: 10px;
+      background-size: auto 160% !important;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
 
-.button-yes{
-  width: 150px !important;
-  display: inline-block;
-}
-.button-no{
-  width: 150px !important;
-  display: inline-block;
-}
-.button-outer{
-  width:100%;
-  text-align: center;
-}
-.button-inner
-{
-    display: inline-block;
-}
+    .like {
+      border-radius: 5px;
+      padding: 5px 10px;
+      border: 2px solid green;
+      color: green;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: absolute;
+      top: 50px;
+      right: 40px;
+      text-shadow: none;
+    }
 
-.checklist-label {
+    .dislike {
+      border-radius: 5px;
+      padding: 5px 10px;
+      border: 2px solid red;
+      color: red;
+      text-transform: uppercase;
+      font-size: 15px;
+      position: absolute;
+      top: 50px;
+      left: 40px;
+      text-shadow: none;
+    }
+
+    #total {
+      /*margin: auto !important;*/
+      /* position: fixed; /* or absolute */
+      text-align: center;
+      font-size: 2em;
+    }
+
+    #totaldescr {
+      text-align: center;
+      /* font-size: 1.3em; */
+      max-width: 500px;
+      margin: auto;
+    }
+
+    #instructions {
+      text-align: center;
+
+      padding-top: 25px;
+      font-size: 1.3em;
+    }
+
+    #footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 1em;
+    }
+
+    .button-yes {
+      width: 150px !important;
+      display: inline-block;
+    }
+
+    .button-no {
+      width: 150px !important;
+      display: inline-block;
+    }
+
+    .button-outer {
+      width: 100%;
+      text-align: center;
+    }
+
+    .button-inner {
+      display: inline-block;
+    }
+
+    .checklist-label {
   text-align: center !important; 
   max-width: 375px !important; 
   margin: 0 auto !important;
 }
-</style>
+
+
+  </style>
 </head>
 
-  
+
 <body>
 
 
 
+  <script id="covid19-template" type="text/html">
+    <div class="buddy" value="{{value}}" id="{{id}}">
+        <div class="symptomdescr">{{question}}</div>
+        <div class="avatar" style="display: block; background-image: url({{image_url}})"></div>
+            <div class="button-outer">
+          <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
+          <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
+              </div>
+          </div>
+</script>
 
-<div id="container">
-<div class="buddy" style="display: block;" value="90.5" id="q1">
-<div class="symptomdescr">Fever Above 37.8C/100F?</div>
-<div class="avatar" style="display: block; background-image: url(https://storage.needpix.com/rsynced_images/catch-a-cold-3893262_1280.png)"></div>
-    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div>
+  <script>
+    var list_of_questions = [
+      { 'id': 'q1', 'value': 90.5, 'question': 'Fever above 37.8C/100F in armpit or forehead?', 'image_url': 'https://storage.needpix.com/rsynced_images/catch-a-cold-3893262_1280.png' },
+      { 'id': 'q2', 'value': 70.5, 'question': 'Dry cough?', 'image_url': 'https://live.staticflickr.com/8519/8577590928_c37f0cbb99_b.jpg' },
+      { 'id': 'q3', 'value': 53.5, 'question': 'Fatigue (feeling extra tired)?', 'image_url': 'images/fatigue1.jpg' },
+      { 'id': 'q4', 'value': 40, 'question': 'No appetite?', 'image_url': '' },
+      { 'id': 'q5', 'value': 250, 'question': 'Breathing difficulty?', 'image_url': '' },
+      { 'id': 'q6', 'value': 29.5, 'question': 'Sputum (spitting or coughing lung mucus)?', 'image_url': '' },
+      { 'id': 'q7', 'value': 27.5, 'question': 'Muscle or bone pain?', 'image_url': '' },
+      { 'id': 'q8', 'value': 11, 'question': 'Sore throat?', 'image_url': '' },
+      { 'id': 'q9', 'value': 10, 'question': 'Headache or dizziness?', 'image_url': '' },
+      { 'id': 'q10', 'value': 213, 'question': 'Confusion?', 'image_url': '' },
+      { 'id': 'q11', 'value': 11, 'question': 'Chills (cold or shivering)?', 'image_url': '' },
+      { 'id': 'q12', 'value': 24, 'question': 'Nausea or vomiting or diarrhea?', 'image_url': '' },
+      { 'id': 'q13', 'value': 51.9, 'question': 'Chronic disease ?', 'image_url': '' },
+      { 'id': 'q14', 'value': 215, 'question': 'Chest pain or chest pressure or irregular heartbeat?', 'image_url': '' },
+      { 'id': 'q15', 'value': 214, 'question': 'Bluish lips or face?', 'image_url': '' },
+      { 'id': 'q16', 'value': 51.9, 'question': 'Older than 60 or younger than 5?', 'image_url': '' },
+    ];
+  </script>
+
+  <div id="container">
+
+    <div id="questions"></div>
+
+   <div class="results" id="results"></div> 
+
   </div>
- 
-<div class="buddy" value="70.5">
-<div class="symptomdescr">Dry Cough?</div>
-<div class="avatar" style="display: block; background-image: url(https://live.staticflickr.com/8519/8577590928_c37f0cbb99_b.jpg)"></div>    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-<div class="buddy" value="53.5">
-<div class="symptomdescr">Fatigue?</div>
-<div class="avatar" style="display: block; background-image: url(images/fatigue1.jpg)"></div>    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-<div class="buddy" value="40">
-<div class="symptomdescr">No appetite?</div>
-<div class="avatar" style="display: block; "></div>    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-<div class="buddy" value="135">
-<div class="symptomdescr">Breathing Difficulty?</div>
-<div class="avatar" style="display: block; "></div>    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-<div class="buddy" value="29.5">
-<div class="symptomdescr">Sputum?</div>
-<div class="avatar" style="display: block;"></div>    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-<div class="buddy" value="27.5">
-<div class="symptomdescr">Muscle or bone pain?</div>
-<div class="avatar" style="display: block; "></div>    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-<div class="buddy" value="11">
-<div class="symptomdescr">Sore throat?</div>
-<div class="avatar" style="display: block; "></div>    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-<div class="buddy" value="10">
-<div class="symptomdescr">Headache or dizziness?</div>
-<div class="avatar" style="display: block; "></div>    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-<div class="buddy" value="100">
-<div class="symptomdescr">Confusion?</div>
-<div class="avatar" style="display: block; "></div>    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-<div class="buddy" value="11">
-<div class="symptomdescr">Chills?</div>
-<div class="avatar" style="display: block; "></div>    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-<div class="buddy" value="9">
-<div class="symptomdescr">Nausea or vomiting or diarrhea?</div>
-<div class="avatar" style="display: block; "></div>    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-<div class="buddy" value="51.9">
-<div class="symptomdescr">Chronic disease ?</div>
-<div class="avatar" style=""></div><div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-<div class="buddy" value="100">
-<div class="symptomdescr">Chest pain or chest pressure or irregular heartbeat</div>
-<div class="avatar" style="display: block; "></div>    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-<div class="buddy" value="100">
-<div class="symptomdescr">Bluish lips or face?</div>
-<div class="avatar" style="display: block; "></div>    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-<div class="buddy" value="51.9">
-<div class="symptomdescr">Older than 60 years old?</div>
-<div class="avatar" style="display: block; "></div>    <div class="button-outer">
-  <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
-  <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
-     </div></div>
-  <div class="results" id="results">
-</div>
 
-  
-  
+<!-- Symptom Checklist -->
+</br>
+<div class="widget">
+  <div id="checklist" class="controlgroup-vertical">
+  </div>
 </div>
 
 <!-- Symptom Checklist -->
@@ -313,27 +266,42 @@
 </div>
 
   <div id="totaldescr">
-<p>If you’re experiencing a life- or limb-threatening emergency, call 911 or the number for your local emergency service.
-This tool is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a medical professional for serious symptoms or emergencies. If the total exceeds 212, consult a doctor immediately</p>
-</div>
-<div id="total" class="total">
-</div>
-  
-<div id="footer" class="footer">
-<p>Algorithm created by Sajung Yun, Ph.D & Sijung Yun, Ph.D (Bioinformatics adjunct professors, Johns Hopkins University)<p>
-<p>More info at <a href="https://www.screencovid.org">ScreenCovid.org</a></p>
-  <p>Find testing locations at <a href="https://findcovidtesting.com/">https://findcovidtesting.com</a><p>
-<p><a href="https://github.com/tconley/screencovid.com/"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="30">Contribute to make this app better.</a><p>
-</div>
+    <p>If you’re experiencing a life- or limb-threatening emergency, call 911 or the number for your local emergency
+      service.
+      This tool is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a medical
+      professional for serious symptoms or emergencies. If the total exceeds 212, consult a doctor immediately</p>
+  </div>
+  <div id="total" class="total">
+  </div>
+
+  <div id="footer" class="footer">
+    <p>Algorithm created by Sajung Yun, Ph.D & Sijung Yun, Ph.D (Bioinformatics adjunct professors, Johns Hopkins
+      University)<p>
+        <p>More info at <a href="https://www.screencovid.org">ScreenCovid.org</a></p>
+        <p>Find testing locations at <a href="https://findcovidtesting.com/">https://findcovidtesting.com</a>
+          <p>
+            <p><a href="https://github.com/tconley/screencovid.com/"><img
+                  src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="30">Contribute
+                to make this app better.</a>
+              <p>
+  </div>
+
+  <div id="test-area"></div>
 
   <script>
-    function showResults(totalscore) {
-  if (totalscore > 212) {
-    $("#results").text("Your score of "+totalscore+ " indicates that you should consult a doctor immediately");
-  } else {
-    $("#results").text("Your score of "+totalscore+ " is below the threshold for COVID-19 pre-screening. However, if you have Difficulty Breathing, Chest Pain, Pressure, or Irregular Heartbeat, Bluish Lips, or Confusion, you should seek medical attention immediately.");
-  }
- }
+    function showResults() {
+      $('#results').css("display", "block");
+    }
+
+
+    function updateResults(totalscore) {
+
+      if (totalscore > 212) {
+        $("#results").text("Your score of " + totalscore.toFixed(1) + " indicates that you should consult a doctor immediately");
+      } else {
+        $("#results").text("Your score of " + totalscore.toFixed(1) + " is below the threshold for COVID-19 pre-screening. However, if you have Difficulty Breathing, Chest Pain, Pressure, or Irregular Heartbeat, Bluish Lips, or Confusion, you should seek medical attention immediately.");
+      }
+    }
 
 /* string hashing for creating unique IDs */
 hashCode = function(s) {
@@ -352,68 +320,85 @@ displayCheckbox = function(h, ph) {
 };
 
 
-$(document).ready(function(){
-  
-  var prev_checkbox_hash = ""
 
-  $('.button-yes').on('click', function(){
-    $(this).attr('disabled',true);
-  $(this).parent().parent().parent().swiperight();
- });
-  
-    $('.button-no').on('click', function(){
-      $(this).attr('disabled',true);
-  $(this).parent().parent().parent().swipeleft();
- });
-  
-  var totalscore=0;
- $("#total").text(totalscore);
-  
 
-  
-    $(".buddy").on("swiperight",function(){
-      totalscore = totalscore + parseFloat($(this).attr('value'));
-      $("#total").text(totalscore);
-      $(this).addClass('rotate-left').delay(700).fadeOut(1);
-      $('.buddy').find('.status').remove();
 
-      $(this).append('<div class="status like">Yes!</div>');      
 
-      /* Add item to checklist */
+    $(document).ready(function () {
+
+var prev_checkbox_hash = ""
+
+      // We load the questions from template + JSON.
+      var template = $('#covid19-template').html();
+      $.each(list_of_questions, function (index, value) {
+        var html = Mustache.to_html(template, value);
+        $('#questions').append(html);
+      });
+      $('#q1').css("display", "block"); // First question gets the focus.
+
+
+      $('.button-yes').on('click', function () {
+        $(this).attr('disabled', true);
+        $(this).parent().parent().parent().swiperight();
+      });
+
+      $('.button-no').on('click', function () {
+        $(this).attr('disabled', true);
+        $(this).parent().parent().parent().swipeleft();
+      });
+
+      var totalscore = 0;
+      $("#total").text(totalscore.toFixed(1));
+
+
+
+      $(".buddy").one("swiperight", function () {
+        totalscore = totalscore + parseFloat($(this).attr('value'));
+        
+        $("#total").text(totalscore.toFixed(1));
+        $(this).addClass('rotate-left').delay(700).fadeOut(1);
+        $('.buddy').find('.status').remove();
+
+        $(this).append('<div class="status like">Yes!</div>');
+
+ /* Add item to checklist */
       var checkbox_hash = hashCode($(this).children(".symptomdescr").text());
       $("#" + checkbox_hash + "-input").prop("checked", true).checkboxradio('refresh');
       prev_checkbox_hash = displayCheckbox(checkbox_hash, prev_checkbox_hash);
 
-      if ( $(this).is(':last-child') ) {
-        //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
-        //alert('message here that we are done');
-        //after survey is done additional messages should be displayed about next steps
-        
-       } else {
+        if ($(this).is(':last-child')) {
+          //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
+          //alert('message here that we are done');
+          //after survey is done additional messages should be displayed about next steps
+updateResults(totalscore);
+showResults();
+        } else {
           $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
-       }
-       showResults(totalscore);
-    });  
+        }
+        
+      });
 
-   $(".buddy").on("swipeleft",function(){
-    $(this).addClass('rotate-right').delay(700).fadeOut(1);
-    $('.buddy').find('.status').remove();
-    $(this).append('<div class="status dislike">No!</div>');
+      $(".buddy").one("swipeleft", function () {
+        $(this).addClass('rotate-right').delay(700).fadeOut(1);
+        $('.buddy').find('.status').remove();
+        $(this).append('<div class="status dislike">No!</div>');
 
-    /* Add item to checklist */
+           /* Add item to checklist */
     var checkbox_hash = hashCode($(this).children(".symptomdescr").text());
     prev_checkbox_hash = displayCheckbox(checkbox_hash, prev_checkbox_hash);
 
-    if ( $(this).is(':last-child') ) {
-         //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
-      //alert('message here that we are done');
-      //after survey is done additional messages should be displayed about next steps
-      
-     } else {
-        $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
-    } 
-     showResults(totalscore);
-  });
+        if ($(this).is(':last-child')) {
+          //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
+          //alert('message here that we are done');
+          //after survey is done additional messages should be displayed about next steps
+updateResults(totalscore);
+showResults();
+        } else {
+          $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
+        }
+        
+      });
+
 
   /* Generate symptom checklist */
   $(".buddy").each(function(index) {
@@ -426,8 +411,8 @@ $(document).ready(function(){
     $("#" + label_id).click(function() {
       var symptom_value = parseFloat($("#" + symptom_id).attr('value'));
       totalscore += $("#" + label_id).hasClass("ui-checkbox-on") ?  -symptom_value : symptom_value;
-      $("#total").text(totalscore);
-      showResults(totalscore);
+      $("#total").text(totalscore.toFixed(1));
+      updateResults(totalscore);
     });
   });
   $(function() {
@@ -436,9 +421,9 @@ $(document).ready(function(){
     });
   });
 
-});
-  </script>
+    });
+  </script
   
   
  </body>
-  </html
+ </html>

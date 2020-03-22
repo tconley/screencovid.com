@@ -13,6 +13,51 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "mrkrause",
+      "name": "Matthew Krause",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/3977675?v=4",
+      "profile": "http://mattkrau.se",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "sahuguet",
+      "name": "Arnaud Sahuguet",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/355907?v=4",
+      "profile": "http://twitter.com/sahuguet",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "tconley",
+      "name": "Todd Conley",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1893207?v=4",
+      "profile": "https://github.com/tconley",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "verata-veritatis",
+      "name": "verata-veritatis",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/9677388?v=4",
+      "profile": "https://github.com/verata-veritatis",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "spencermasaki",
+      "name": "spencermasaki",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/44410505?v=4",
+      "profile": "https://github.com/spencermasaki",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
