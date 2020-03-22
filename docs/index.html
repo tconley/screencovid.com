@@ -22,10 +22,10 @@
 }
 
 #container {
-  width: 500px;
+  width: 100%;
   margin: auto !important;
   display: block;
-  height: 500px;
+  height: 390px;
   position: relative;
   list-style-type: none;
   -webkit-touch-callout: none;
@@ -42,11 +42,13 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   color: #000;
-  padding: 20px;
-  width: 360px;
-  height: 360px;
-  top: 50px;
-  left: 50px;
+  width: -webkit-fill-available;
+  /* padding: 10px; */
+  /* margin-left: 10px; */
+  margin: 10px;
+  height: 380px;
+  /* top: 50px; */
+  /* left: 50px; */
   position: absolute;
   cursor: hand;
 }
@@ -68,14 +70,16 @@
 }
 .avatar {
   background: #222;
-  width: 340px;
+  width: -webkit-fill-available;
   height: 340px;
   display: block;
   margin-top: 10px;
-  margin-left: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 10px;
   background-size: auto 160% !important;
   background-position: center;
- background-repeat: no-repeat;
+  background-repeat: no-repeat;
 }
 .like {
   border-radius: 5px;
@@ -112,9 +116,8 @@
 
 #totaldescr {
   text-align: center;
-  
   padding-top: 25px;
-  font-size: 1.3em;
+  /* font-size: 1.3em; */
 }
   
   #instructions {
