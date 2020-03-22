@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <head>
@@ -283,14 +282,18 @@
   <div id="test-area"></div>
 
   <script>
-    function showResults(totalscore) {
+    function showResults() {
+      $('#results').css("display", "block");
+    }
+
+
+    function updateResults(totalscore) {
 
       if (totalscore > 212) {
         $("#results").text("Your score of " + totalscore.toFixed(1) + " indicates that you should consult a doctor immediately");
       } else {
         $("#results").text("Your score of " + totalscore.toFixed(1) + " is below the threshold for COVID-19 pre-screening. However, if you have Difficulty Breathing, Chest Pain, Pressure, or Irregular Heartbeat, Bluish Lips, or Confusion, you should seek medical attention immediately.");
       }
-      $('#results').css("display", "block");
     }
 
 /* string hashing for creating unique IDs */
@@ -360,7 +363,8 @@ var prev_checkbox_hash = ""
           //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
           //alert('message here that we are done');
           //after survey is done additional messages should be displayed about next steps
-showResults(totalscore);
+updateResults(totalscore);
+showResults();
         } else {
           $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
         }
@@ -380,7 +384,8 @@ showResults(totalscore);
           //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
           //alert('message here that we are done');
           //after survey is done additional messages should be displayed about next steps
-showResults(totalscore);
+updateResults(totalscore);
+showResults();
         } else {
           $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
         }
@@ -400,7 +405,7 @@ showResults(totalscore);
       var symptom_value = parseFloat($("#" + symptom_id).attr('value'));
       totalscore += $("#" + label_id).hasClass("ui-checkbox-on") ?  -symptom_value : symptom_value;
       $("#total").text(totalscore.toFixed(1));
-      showResults(totalscore);
+      updateResults(totalscore);
     });
   });
   $(function() {
@@ -414,4 +419,4 @@ showResults(totalscore);
   
   
  </body>
-  </html>
+ </html>
