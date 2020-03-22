@@ -237,9 +237,11 @@
 
     <div id="questions"></div>
 
-    <div class="results" id="results"></div>
+   <div class="results" id="results"></div> 
 
   </div>
+
+
 
   <div id="totaldescr">
     <p>If you’re experiencing a life- or limb-threatening emergency, call 911 or the number for your local emergency
@@ -271,6 +273,7 @@
       } else {
         $("#results").text("Your score of " + totalscore + " is below the threshold for COVID-19 pre-screening. However, if you have Difficulty Breathing, Chest Pain, Pressure, or Irregular Heartbeat, Bluish Lips, or Confusion, you should seek medical attention immediately.");
       }
+      $('#results').css("display", "block");
     }
 
 
@@ -312,11 +315,11 @@
           //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
           //alert('message here that we are done');
           //after survey is done additional messages should be displayed about next steps
-
+showResults(totalscore);
         } else {
           $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
         }
-        showResults(totalscore);
+        
       });
 
       $(".buddy").on("swipeleft", function () {
@@ -328,11 +331,11 @@
           //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
           //alert('message here that we are done');
           //after survey is done additional messages should be displayed about next steps
-
+showResults(totalscore);
         } else {
           $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
         }
-        showResults(totalscore);
+        
       });
 
     });
@@ -340,4 +343,4 @@
   
   
  </body>
-  </html
+  </html>
