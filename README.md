@@ -1,6 +1,6 @@
 # screencovid.com
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Please contribute! This project is based off a phone call I had with Sajung Yun, PhD. He is very much interested in saving lives, and has analyzed the data available to come up with a simple formula for a screener.  He created a screening tool, but it wasn't a mobile friendly UX. You can see what he's put together at https://www.screencovid.org/ . The goal is to get this tool production ready by Mon 3/23 so Dr. Yun can share with the media. 
@@ -36,6 +36,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://tooomuch.info"><img src="https://avatars0.githubusercontent.com/u/1176471?v=4" width="100px;" alt=""/><br /><sub><b>developingidea</b></sub></a><br /><a href="https://github.com/tconley/screencovid.com/commits?author=developingidea" title="Code">💻</a></td>
+    <td align="center"><a href="http://mattkrau.se"><img src="https://avatars2.githubusercontent.com/u/3977675?v=4" width="100px;" alt=""/><br /><sub><b>Matthew Krause</b></sub></a><br /><a href="#content-mrkrause" title="Content">🖋</a></td>
   </tr>
 </table>
 
