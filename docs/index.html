@@ -306,7 +306,7 @@
 
 
 
-      $(".buddy").on("swiperight", function () {
+      $(".buddy").one("swiperight", function () {
         totalscore = totalscore + parseFloat($(this).attr('value'));
         $("#total").text(totalscore);
         $(this).addClass('rotate-left').delay(700).fadeOut(1);
@@ -324,7 +324,7 @@ showResults(totalscore);
         
       });
 
-      $(".buddy").on("swipeleft", function () {
+      $(".buddy").one("swipeleft", function () {
         $(this).addClass('rotate-right').delay(700).fadeOut(1);
         $('.buddy').find('.status').remove();
         $(this).append('<div class="status dislike">No!</div>');
