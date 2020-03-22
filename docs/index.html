@@ -183,6 +183,12 @@
 {
     display: inline-block;
 }
+
+.checklist-label {
+  text-align: center !important; 
+  max-width: 375px !important; 
+  margin: 0 auto !important;
+}
 </style>
 </head>
 
@@ -299,6 +305,13 @@
   
 </div>
 
+<!-- Symptom Checklist -->
+</br>
+<div class="widget">
+  <div id="checklist" class="controlgroup-vertical">
+  </div>
+</div>
+
   <div id="totaldescr">
 <p>If you’re experiencing a life- or limb-threatening emergency, call 911 or the number for your local emergency service.
 This tool is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a medical professional for serious symptoms or emergencies. If the total exceeds 212, consult a doctor immediately</p>
@@ -322,9 +335,27 @@ This tool is not a substitute for professional medical advice, diagnosis, or tre
   }
  }
 
+/* string hashing for creating unique IDs */
+hashCode = function(s) {
+  var h = 0, l = s.length, i = 0;
+  if ( l > 0 )
+    while (i < l)
+      h = (h << 5) - h + s.charCodeAt(i++) | 0;
+  return h;
+};
+displayCheckbox = function(h, ph) {
+  $("#" + h + "-label").css('display', 'block').css('border-bottom-width', '1px')
+      .css('border-bottom-left-radius', '5px').css('border-bottom-right-radius', '5px');
+  $("#" + ph + "-label").css('border-bottom-width', '0px')
+      .css('border-bottom-left-radius', '0px').css('border-bottom-right-radius', '0px');
+  return h;
+};
+
 
 $(document).ready(function(){
- 
+  
+  var prev_checkbox_hash = ""
+
   $('.button-yes').on('click', function(){
     $(this).attr('disabled',true);
   $(this).parent().parent().parent().swiperight();
@@ -347,6 +378,12 @@ $(document).ready(function(){
       $('.buddy').find('.status').remove();
 
       $(this).append('<div class="status like">Yes!</div>');      
+
+      /* Add item to checklist */
+      var checkbox_hash = hashCode($(this).children(".symptomdescr").text());
+      $("#" + checkbox_hash + "-input").prop("checked", true).checkboxradio('refresh');
+      prev_checkbox_hash = displayCheckbox(checkbox_hash, prev_checkbox_hash);
+
       if ( $(this).is(':last-child') ) {
         //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
         //alert('message here that we are done');
@@ -363,6 +400,10 @@ $(document).ready(function(){
     $('.buddy').find('.status').remove();
     $(this).append('<div class="status dislike">No!</div>');
 
+    /* Add item to checklist */
+    var checkbox_hash = hashCode($(this).children(".symptomdescr").text());
+    prev_checkbox_hash = displayCheckbox(checkbox_hash, prev_checkbox_hash);
+
     if ( $(this).is(':last-child') ) {
          //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
       //alert('message here that we are done');
@@ -374,8 +415,29 @@ $(document).ready(function(){
      showResults(totalscore);
   });
 
+  /* Generate symptom checklist */
+  $(".buddy").each(function(index) {
+    var symptom_desc = $(this).children(".symptomdescr").text();
+    var symptom_id = hashCode(symptom_desc) + "-input";
+    var label_id = hashCode(symptom_desc) + "-label";
+    $("#checklist").append('<label class="checklist-label" style="display: none;" id="' + 
+        label_id + '" for="' + symptom_id + '">' + symptom_desc + '</label>' +
+        '<input style="display: none;" type="checkbox" id="' + symptom_id + '" value="' + $(this).attr("value") + '">');
+    $("#" + label_id).click(function() {
+      var symptom_value = parseFloat($("#" + symptom_id).attr('value'));
+      totalscore += $("#" + label_id).hasClass("ui-checkbox-on") ?  -symptom_value : symptom_value;
+      $("#total").text(totalscore);
+      showResults(totalscore);
+    });
+  });
+  $(function() {
+    $( ".controlgroup-vertical" ).controlgroup({
+      "direction": "vertical"
+    });
+  });
+
 });
-    </script
+  </script>
   
   
  </body>
