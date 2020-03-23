@@ -252,11 +252,11 @@
   </div>
 
 <!-- Symptom Checklist -->
-</br>
 <div class="widget">
   <div id="checklist" class="controlgroup-vertical">
   </div>
 </div>
+</br>
 
   <div id="totaldescr">
     <p>If you’re experiencing a life- or limb-threatening emergency, call 911 or the number for your local emergency
@@ -296,14 +296,7 @@
       }
     }
 
-/* string hashing for creating unique IDs */
-hashCode = function(s) {
-  var h = 0, l = s.length, i = 0;
-  if ( l > 0 )
-    while (i < l)
-      h = (h << 5) - h + s.charCodeAt(i++) | 0;
-  return h;
-};
+/* Display new checkbox and format style */
 displayCheckbox = function(h, ph) {
   $("#" + h + "-label").css('display', 'block').css('border-bottom-width', '1px')
       .css('border-bottom-left-radius', '5px').css('border-bottom-right-radius', '5px');
@@ -319,7 +312,7 @@ displayCheckbox = function(h, ph) {
 
     $(document).ready(function () {
 
-var prev_checkbox_hash = ""
+var prev_checkbox_id = ""
 
       // We load the questions from template + JSON.
       var template = $('#covid19-template').html();
@@ -355,9 +348,9 @@ var prev_checkbox_hash = ""
         $(this).append('<div class="status like">Yes!</div>');
 
  /* Add item to checklist */
-      var checkbox_hash = hashCode($(this).children(".symptomdescr").text());
-      $("#" + checkbox_hash + "-input").prop("checked", true).checkboxradio('refresh');
-      prev_checkbox_hash = displayCheckbox(checkbox_hash, prev_checkbox_hash);
+      var checkbox_id = $(this).attr('id');
+      $("#" + checkbox_id + "-input").prop("checked", true).checkboxradio('refresh');
+      prev_checkbox_id = displayCheckbox(checkbox_id, prev_checkbox_id);
 
         if ($(this).is(':last-child')) {
           //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
@@ -377,8 +370,8 @@ showResults();
         $(this).append('<div class="status dislike">No!</div>');
 
            /* Add item to checklist */
-    var checkbox_hash = hashCode($(this).children(".symptomdescr").text());
-    prev_checkbox_hash = displayCheckbox(checkbox_hash, prev_checkbox_hash);
+    var checkbox_id = $(this).attr('id');
+    prev_checkbox_id = displayCheckbox(checkbox_id, prev_checkbox_id);
 
         if ($(this).is(':last-child')) {
           //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
@@ -394,15 +387,15 @@ showResults();
 
 
   /* Generate symptom checklist */
-  $(".buddy").each(function(index) {
-    var symptom_desc = $(this).children(".symptomdescr").text();
-    var symptom_id = hashCode(symptom_desc) + "-input";
-    var label_id = hashCode(symptom_desc) + "-label";
-    $("#checklist").append('<label class="checklist-label" style="display: none;" id="' + 
-        label_id + '" for="' + symptom_id + '">' + symptom_desc + '</label>' +
-        '<input style="display: none;" type="checkbox" id="' + symptom_id + '" value="' + $(this).attr("value") + '">');
-    $("#" + label_id).click(function() {
-      var symptom_value = parseFloat($("#" + symptom_id).attr('value'));
+  list_of_questions.forEach(function(item) {
+    var input_id = item.id + "-input";
+    var label_id = item.id + "-label";
+    var list_item = '<label class="checklist-label" style="display: none;" id="' + 
+        label_id + '" for="' + input_id + '">' + item.question + '</label>' +
+        '<input style="display: none;" type="checkbox" id="' + input_id + '" value="' + item.value + '">';
+    $("#checklist").append(list_item);
+    $("#" + input_id).on('change', function() {
+      var symptom_value = item.value;
       totalscore += $("#" + label_id).hasClass("ui-checkbox-on") ?  -symptom_value : symptom_value;
       $("#total").text(totalscore.toFixed(1));
       updateResults(totalscore);
@@ -415,7 +408,7 @@ showResults();
   });
 
     });
-  </script
+  </script>
   
   
  </body>
