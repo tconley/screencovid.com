@@ -41,10 +41,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/tconley"><img src="https://avatars2.githubusercontent.com/u/1893207?v=4" width="100px;" alt=""/><br /><sub><b>Todd Conley</b></sub></a><br /><a href="https://github.com/tconley/screencovid.com/commits?author=tconley" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/verata-veritatis"><img src="https://avatars0.githubusercontent.com/u/9677388?v=4" width="100px;" alt=""/><br /><sub><b>verata-veritatis</b></sub></a><br /><a href="https://github.com/tconley/screencovid.com/commits?author=verata-veritatis" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/spencermasaki"><img src="https://avatars3.githubusercontent.com/u/44410505?v=4" width="100px;" alt=""/><br /><sub><b>spencermasaki</b></sub></a><br /><a href="https://github.com/tconley/screencovid.com/commits?author=spencermasaki" title="Code">💻</a></td>
-
-    <td align="center"><a href="https://github.com/kant"><img src="https://avatars1.githubusercontent.com/u/32717?v=4" width="100px;" alt=""/><br /><sub><b>Darío Hereñú</b></sub></a><br /><a href="https://github.com/tconley/screencovid.com/commits?author=kant" title="Documentation">📖</a></td>
-
-    <td align="center"><a href="https://sage-t.github.io/"><img src="https://avatars2.githubusercontent.com/u/3631855?v=4" width="100px;" alt=""/><br /><sub><b>Sage Thomas</b></sub></a><br /><a href="https://github.com/tconley/screencovid.com/commits?author=sage-t" title="Code">💻</a></td>
+  <td align="center"><a href="https://github.com/kant"><img src="https://avatars1.githubusercontent.com/u/32717?v=4" width="100px;" alt=""/><br /><sub><b>Darío Hereñú</b></sub></a><br /><a href="https://github.com/tconley/screencovid.com/commits?author=kant" title="Documentation">📖</a></td>
+  <td align="center"><a href="https://sage-t.github.io/"><img src="https://avatars2.githubusercontent.com/u/3631855?v=4" width="100px;" alt=""/><br /><sub><b>Sage Thomas</b></sub></a><br /><a href="https://github.com/tconley/screencovid.com/commits?author=sage-t" title="Code">💻</a></td>
 
   </tr>
 </table>
