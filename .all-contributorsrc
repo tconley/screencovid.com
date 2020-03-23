@@ -60,14 +60,25 @@
       ]
     },
     {
+
       "login": "kant",
       "name": "Darío Hereñú",
       "avatar_url": "https://avatars1.githubusercontent.com/u/32717?v=4",
       "profile": "https://github.com/kant",
       "contributions": [
         "doc"
-      ]
+        ]
+    },
+    {
+      "login": "sage-t",
+      "name": "Sage Thomas",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/3631855?v=4",
+      "profile": "https://sage-t.github.io/",
+      "contributions": [
+        "code"
+        ]
     }
+  
   ],
   "contributorsPerLine": 7,
   "projectName": "screencovid.com",
