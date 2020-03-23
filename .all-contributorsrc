@@ -58,6 +58,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "sage-t",
+      "name": "Sage Thomas",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/3631855?v=4",
+      "profile": "https://sage-t.github.io/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

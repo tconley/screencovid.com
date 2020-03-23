@@ -1,12 +1,12 @@
 # screencovid.com
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Please contribute! This project is based off a phone call I had with Sajung Yun, PhD. He is very much interested in saving lives, and has analyzed the data available to come up with a simple formula for a screener.  He created a screening tool, but it wasn't a mobile friendly UX. You can see what he's put together at https://www.screencovid.org/ . The goal is to get this tool production ready by Mon 3/23 so Dr. Yun can share with the media. 
 
 # ScreenCovid.com 
-Site is live at https://screencovid.com using github hosting and is pulled from the /docs folder
+Site is live at https://screencovid.com using github hosting and is pulled from the `/docs` folder
 
 You can view Dr Yun's findings and rationale behind the screening at https://github.com/tconley/screencovid.com/raw/master/Presentation_Prescreencovid_v9_03202020.pdf
 
@@ -19,7 +19,7 @@ You can view Dr Yun's findings and rationale behind the screening at https://git
 * create a contributors page to give credit to anyone that helps
 * https://codepen.io/tconley/pen/poJZBQK 
 
-#Recommendations based on symptoms
+# Recommendations based on symptoms
 There are 3 thresholds listed in the PDF. Dr. Yun is consulting with the medical community about these 3 tiers, so for now he wants to advise any score greater than 212 to consult with a doctor.  Regardless, app should have functionality for the 3 different alert levels, as that will be decided upon in the next few days.
 * \> 212 = Doctor consultation
 * \> 260 = COVID-19 Testing recommended
@@ -41,6 +41,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/tconley"><img src="https://avatars2.githubusercontent.com/u/1893207?v=4" width="100px;" alt=""/><br /><sub><b>Todd Conley</b></sub></a><br /><a href="https://github.com/tconley/screencovid.com/commits?author=tconley" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/verata-veritatis"><img src="https://avatars0.githubusercontent.com/u/9677388?v=4" width="100px;" alt=""/><br /><sub><b>verata-veritatis</b></sub></a><br /><a href="https://github.com/tconley/screencovid.com/commits?author=verata-veritatis" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/spencermasaki"><img src="https://avatars3.githubusercontent.com/u/44410505?v=4" width="100px;" alt=""/><br /><sub><b>spencermasaki</b></sub></a><br /><a href="https://github.com/tconley/screencovid.com/commits?author=spencermasaki" title="Code">💻</a></td>
+    <td align="center"><a href="https://sage-t.github.io/"><img src="https://avatars2.githubusercontent.com/u/3631855?v=4" width="100px;" alt=""/><br /><sub><b>Sage Thomas</b></sub></a><br /><a href="https://github.com/tconley/screencovid.com/commits?author=sage-t" title="Code">💻</a></td>
   </tr>
 </table>
 
