@@ -302,6 +302,11 @@
       } else {
         $("#results").text("Your score of " + totalscore.toFixed(1) + " is below the threshold for COVID-19 pre-screening. However, if you have Difficulty Breathing, Chest Pain, Pressure, or Irregular Heartbeat, Bluish Lips, or Confusion, you should seek medical attention immediately.");
       }
+
+      if ($("#results").css("display") == "block") {
+        $('#container').css("height", $("#results").css("height"));
+        $('#container').height("+=50");
+      }
     }
 
 /* Display new checkbox and format style */
@@ -364,8 +369,8 @@ var prev_checkbox_id = ""
           //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
           //alert('message here that we are done');
           //after survey is done additional messages should be displayed about next steps
-updateResults(totalscore);
 showResults();
+updateResults(totalscore);
         } else {
           $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
         }
@@ -385,8 +390,9 @@ showResults();
           //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
           //alert('message here that we are done');
           //after survey is done additional messages should be displayed about next steps
-updateResults(totalscore);
+
 showResults();
+updateResults(totalscore);
         } else {
           $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
         }
