@@ -111,7 +111,7 @@
     }
 
     .avatar {
-      background: #222;
+      background: rgb(236, 240, 245);;
       width: -webkit-fill-available;
       height: 340px;
       display: block;
@@ -119,7 +119,7 @@
       margin-left: 5px;
       margin-right: 5px;
       margin-bottom: 10px;
-      background-size: auto 160% !important;
+      background-size: auto 100% !important;
       background-position: center;
       background-repeat: no-repeat;
     }
@@ -214,7 +214,7 @@
   <script id="covid19-template" type="text/html">
     <div class="buddy" value="{{value}}" id="{{id}}">
         <div class="symptomdescr">{{question}}</div>
-        <div class="avatar" style="display: block; background-image: url({{image_url}})"></div>
+        <div class="avatar" style="display: block; background-image: url({{image_url}}); background-size: "></div>
             <div class="button-outer">
           <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">NO</button></div>
           <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">YES</button></div>
@@ -224,22 +224,22 @@
 
   <script>
     var list_of_questions = [
-      { 'id': 'q1', 'value': 90.5, 'question': 'Fever above 37.8C/100F in armpit or forehead?', 'image_url': 'https://storage.needpix.com/rsynced_images/catch-a-cold-3893262_1280.png' },
-      { 'id': 'q2', 'value': 70.5, 'question': 'Dry cough?', 'image_url': 'https://live.staticflickr.com/8519/8577590928_c37f0cbb99_b.jpg' },
-      { 'id': 'q3', 'value': 53.5, 'question': 'Fatigue (feeling extra tired)?', 'image_url': 'images/fatigue1.jpg' },
-      { 'id': 'q4', 'value': 40, 'question': 'No appetite?', 'image_url': '' },
-      { 'id': 'q5', 'value': 250, 'question': 'Breathing difficulty?', 'image_url': '' },
-      { 'id': 'q6', 'value': 29.5, 'question': 'Sputum (spitting or coughing lung mucus)?', 'image_url': '' },
-      { 'id': 'q7', 'value': 27.5, 'question': 'Muscle or bone pain?', 'image_url': '' },
-      { 'id': 'q8', 'value': 11, 'question': 'Sore throat?', 'image_url': '' },
-      { 'id': 'q9', 'value': 10, 'question': 'Headache or dizziness?', 'image_url': '' },
-      { 'id': 'q10', 'value': 213, 'question': 'Confusion?', 'image_url': '' },
-      { 'id': 'q11', 'value': 11, 'question': 'Chills (cold or shivering)?', 'image_url': '' },
-      { 'id': 'q12', 'value': 24, 'question': 'Nausea or vomiting or diarrhea?', 'image_url': '' },
-      { 'id': 'q13', 'value': 51.9, 'question': 'Chronic disease?', 'image_url': '' },
-      { 'id': 'q14', 'value': 215, 'question': 'Chest pain or chest pressure or irregular heartbeat?', 'image_url': '' },
-      { 'id': 'q15', 'value': 214, 'question': 'Bluish lips or face?', 'image_url': '' },
-      { 'id': 'q16', 'value': 51.9, 'question': 'Older than 50 or younger than 5?', 'image_url': '' },
+      { 'id': 'q1', 'value': 90.5, 'question': 'Fever above 37.8C/100F in armpit or forehead?', 'image_url': 'images/fever.svg' },
+      { 'id': 'q2', 'value': 70.5, 'question': 'Dry cough?', 'image_url': 'images/cough.svg' },
+      { 'id': 'q3', 'value': 53.5, 'question': 'Fatigue (feeling extra tired)?', 'image_url': 'images/fatigue.svg' },
+      { 'id': 'q4', 'value': 40, 'question': 'No appetite?', 'image_url': 'images/no_appetite.svg' },
+      { 'id': 'q5', 'value': 250, 'question': 'Breathing difficulty?', 'image_url': 'images/difficulty_breathing.svg' },
+      { 'id': 'q6', 'value': 29.5, 'question': 'Sputum (spitting or coughing lung mucus)?', 'image_url': 'images/sputum.svg' },
+      { 'id': 'q7', 'value': 27.5, 'question': 'Muscle or bone pain?', 'image_url': 'images/body_pain.svg' },
+      { 'id': 'q8', 'value': 11, 'question': 'Sore throat?', 'image_url': 'images/sore_throat.svg' },
+      { 'id': 'q9', 'value': 10, 'question': 'Headache or dizziness?', 'image_url': 'images/headache.svg' },
+      { 'id': 'q10', 'value': 213, 'question': 'Confusion?', 'image_url': 'images/confusion.svg' },
+      { 'id': 'q11', 'value': 11, 'question': 'Chills (cold or shivering)?', 'image_url': 'images/chills.svg' },
+      { 'id': 'q12', 'value': 24, 'question': 'Nausea or vomiting or diarrhea?', 'image_url': 'images/nausea.svg' },
+      { 'id': 'q13', 'value': 51.9, 'question': 'Chronic disease?', 'image_url': 'images/chronic.svg' },
+      { 'id': 'q14', 'value': 215, 'question': 'Chest pain or chest pressure or irregular heartbeat?', 'image_url': 'images/heart.svg' },
+      { 'id': 'q15', 'value': 214, 'question': 'Bluish lips or face?', 'image_url': 'images/blue.svg' },
+      { 'id': 'q16', 'value': 51.9, 'question': 'Older than 50 or younger than 5?', 'image_url': 'images/man_and_child.svg' },
     ];
   </script>
 
