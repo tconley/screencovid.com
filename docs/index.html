@@ -219,7 +219,7 @@
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
     }
-    
+
     .side-panel-btn {
       margin: 0 0 0 10px !important; 
       border-width: 0;
@@ -237,12 +237,44 @@
     #menu-icon {
       fill: #fff;
     }
+
+    .ui-panel-inner {
+      padding: 0;
+    }
+
+    .ui-collapsible-content {
+      padding: 0;
+    }
+
+    .ui-page-theme-a a {
+      font-weight: 400;
+    }
+
+    .ui-collapsible-heading .ui-btn {
+      text-align: center;
+    }
+
+    .slide-panel-header {
+      text-align: center;
+      padding: 0 15px 0 15px;
+    }
+
+    .ui-panel-inner .ui-btn {
+      margin: -1px 0;
+    }
+
+    #virus-img {
+      display: block;
+      margin: auto;
+      border: 3px solid #3c8dbc;
+      border-radius: 25px;
+    }
   </style>
 </head>
 
 
 <body>
-
+  <div data-role="page">
 
 
   <script id="covid19-template" type="text/html">
@@ -254,7 +286,7 @@
           <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">{{yes}}</button></div>
               </div>
           </div>
-</script>
+  </script>
 
   <script>
 
@@ -408,6 +440,37 @@
       { 'id': 'q15', 'value': 214, 'question': i18n.gettext('Bluish lips or face?'), 'image_url': 'images/blue.svg' },
       { 'id': 'q16', 'value': 51.9, 'question': i18n.gettext('Older than 50 or younger than 5?'), 'image_url': 'images/man_and_child.svg' },
     ];
+  </script>
+
+
+  <!-- Side Panel -->
+  <div data-role="panel" id="sidepanel" data-position="left" data-display="overlay" style="background-color: #f9f9f9;">
+    <br>
+    <h2 class="slide-panel-header">COVID-19 Online Screening Tool</h2>
+    <img id="virus-img" src="images/covid19.jpg" alt="COVID-19 Virus" width="50%"> 
+    <h4 class="slide-panel-header">Assess your risk for COVID-19</h4>
+    <br>
+
+    <a href="https://dnahealthmap.shinyapps.io/CovidScreener_v01/" target="_blank" class="ui-btn">Desktop Version</a>
+    
+    <div data-role="collapsible-set" style="margin: 0; border-radius: 0;" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+      <div data-role="collapsible" data-collapsed="true">
+        <h3>Languages</h3>
+        <div style="margin: 0; border-radius: 0;" class="controlgroup-vertical">
+          <a href="#" onclick="refreshLangQuery('en');" class="ui-btn ui-corner-all">English</a>
+          <a href="#" onclick="refreshLangQuery('es');" class="ui-btn ui-corner-all">Español</a>
+          <a href="#" onclick="refreshLangQuery('fr');" class="ui-btn ui-corner-all">Français</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="https://www.screencovid.org/" target="_blank" class="ui-btn">About This Tool</a>
+    <a href="https://findcovidtesting.com/" target="_blank" class="ui-btn">COVID-19 Test Locations</a>
+  </div>
+  <script>
+    function refreshLangQuery(lang) {
+      window.location.href = window.location.pathname + "?" + $.param({'lang': lang})
+    }
   </script>
 
   <!-- Toolbar -->
@@ -621,6 +684,7 @@
   </script>
 
 
+  </div> <!-- page -->
 </body>
 
 </html>
