@@ -308,113 +308,131 @@
                     'fr': 'oui',
                     'es': 'sí',
                     'hu': 'igen',
+                    'pl': 'tak',
                 },
                 {
                     'default': 'no',
                     'fr': 'non',
                     'es': 'no',
                     'hu': 'nem',
+                    'pl': 'nie',
                 },
                 {
                     'default': 'Fever above 37.8C/100F in armpit or forehead?',
                     'fr': 'Fièvre supérieure à 37.8C/100F sous le bras ou sur le front',
                     'es': '¿Fiebre por encima de 37.8C / 100F en la axila o la frente?',
                     'hu': '37.8C feletti láz?',
+                    'pl': 'Gorączka powyżej 37,8 ° C / 100 ° w pachach lub czole',
                 },
                 {
                     'default': 'Dry cough?',
                     'fr': 'Toux sèche ?',
                     'es': '¿Tos Seca?',
                     'hu': 'Száraz köhögés?',
+                    'pl': 'Suchy kaszel',
                 },
                 {
                     'default': 'Fatigue (feeling extra tired)?',
                     'fr': 'Fatigue ?',
                     'es': '¿ Fatiga ?',
                     'hu': 'Fáradtság (extra fáradtság)?',
+                    'pl': 'Zmęczenie (dodatkowe zmęczenie)',
                 },
                 {
                     'default': 'No appetite?',
                     'fr': 'Pas d\'apétit ?',
                     'es': '¿ Sin apetito?',
                     'hu': 'Étvágytalanság?',
+                    'pl': 'Utrata apetytu',
                 },
                 {
                     'default': 'Breathing difficulty?',
                     'fr': 'Difficultés à respirer ?',
                     'es': '¿ Dificultad respiratoria ?',
                     'hu': 'Légzési nehézség?',
+                    'pl': 'Trudności w oddychaniu (duszność)',
                 },
                 {
                     'default': 'Sputum (spitting or coughing lung mucus)?',
                     'fr': 'Expectorations',
                     'es': '¿ Esputo ?',
                     'hu': 'Köpetürítés / váladékos köhögés?',
+                    'pl': 'Plwocina (plucie lub kaszel śluz płucny)',
                 },
                 {
                     'default': 'Muscle or bone pain?',
                     'fr': 'Douleur musculaire ou osseuse ?',
                     'es': '¿ Dolor muscular o óseo ?',
                     'hu': 'Izom- vagy csontfájdalom?',
+                    'pl': 'Ból mięśni lub kości',
                 },
                 {
                     'default': 'Sore throat?',
                     'fr': 'Gorge irritée ?',
                     'es': '¿ Dolor de garganta ?',
                     'hu': 'Torokfájás?',
+                    'pl': 'Ból gardła',
                 },
                 {
                     'default': 'Headache or dizziness?',
                     'fr': 'Maux de tête ou vertiges ?',
                     'es': '¿ Dolor de cabeza o mareos?',
                     'hu': 'Fejfájás vagy szédülés?',
+                    'pl': 'Ból głowy lub zawroty głowy',
                 },
                 {
                     'default': 'Confusion?',
                     'fr': 'Confusion ?',
                     'es': '¿ Confusión ?',
                     'hu': 'Zavartság?',
+                    'pl': 'Confusion',
                 },
                 {
                     'default': 'Chills (cold or shivering)?',
                     'fr': 'Frissons ?',
                     'es': '¿ Resfriado ?',
                     'hu': 'Hidegrázás?',
+                    'pl': 'Dreszcze (zimno lub dreszcze)',
                 },
                 {
                     'default': 'Nausea or vomiting or diarrhea?',
                     'fr': 'Nausées ou vomissements ou diarrhée ?',
                     'es': '¿ Náuseas o vómitos o diarrea ?',
                     'hu': 'Hányinger/hányás vagy hasmenés?',
+                    'pl': 'Nudności lub wymioty lub biegunka',
                 },
                 {
                     'default': 'Chronic disease?',
                     'fr': 'Maladie chronique ?',
                     'es': '¿ Enfermedad crónica ?',
                     'hu': 'Krónikus betegség?',
+                    'pl': 'Przewlekła choroba',
                 },
                 {
                     'default': 'Chest pain or chest pressure or irregular heartbeat?',
                     'fr': 'Douleur thoracique ou pression thoracique ou rythme cardiaque irrégulier ?',
                     'es': '¿ Dolor en el pecho o presión en el pecho o latidos cardíacos irregulares ?',
                     'hu': 'Mellkasi fájdalom vagy mellkasi nyomás vagy szabálytalan szívverés?',
+                    'pl': 'Ból w klatce piersiowej lub ucisk w klatce piersiowej lub nieregularne bicie serca',
                 },
                 {
                     'default': 'Bluish lips or face?',
                     'fr': 'Lèvres ou visage bleutés ?',
                     'es': '¿ Labios o cara azulados ?',
                     'hu': 'Kékes ajkak vagy az arc?',
+                    'pl': 'Niebieskawe usta lub twarz',
                 },
                 {
                     'default': 'Older than 50 or younger than 5?',
                     'fr': 'Plus de 60 ans ou moins de 5 ans?',
                     'es': '¿ Mayor de 50 años o menor de 5 ?',
                     'hu': 'Idősebb mint 50 vagy fiatalabb mint 5?',
+                    'pl': 'Starsze niż 50 lub młodsze niż 5 (z poważnymi chorobami podstawowymi)',
                 }
             ]
 
         // 'es': '¿ ?',
-        LANGUAGES = ['fr', 'es', 'hu'];
+        LANGUAGES = ['fr', 'es', 'hu', 'pl'];
 
         LANGUAGES.forEach(language => {
             var data = {};
@@ -613,6 +631,7 @@
         <p class="info lang-hu">Ez NEM egy hivatalos, hitelesített teszt, csak a tünetek felismerését segíti! Amennyiben
             valójában tüneteket észlel magán jelentkezzen háziorvosánál!
             212 pont felett érdemes mielőbb konzultálnia háziorvosával!</p>
+            <p class="info lang-pl">Jeśli zdarza się sytuacja zagrożenia życia lub kończyny, zadzwoń pod numer 911 lub zadzwoń pod lokalny numer alarmowy. To narzędzie nie zastępuje profesjonalnej porady medycznej, diagnozy ani leczenia. Zawsze skonsultuj się z lekarzem w przypadku poważnych objawów lub nagłych wypadków.</p>
     </div>
     <div id="total" class="total">
     </div>
