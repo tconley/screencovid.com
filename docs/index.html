@@ -1,690 +1,768 @@
 <!DOCTYPE html>
-
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161530831-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161530831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-    gtag('config', 'UA-161530831-1');
-  </script>
-  <meta charset="UTF-8">
-  <meta property="og:title" content="ScreenCovid.com Online Covid Screening">
-  <meta property="og:site_name" content="ScreenCovid.com">
-  <meta property="og:url" content="https://screencovid.com">
-  <meta property="og:description" content="">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://screencovid.com/images/covid19.jpg">
-  <title>ScreenCovid.com</title>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+        gtag('js', new Date());
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.min.js"
-    integrity="sha256-MPgtcamIpCPKRRm1ppJHkvtNBAuE71xcOM+MmQytXi8=" crossorigin="anonymous"></script>
-  <script src="gettext.iife.js"></script>
+        gtag('config', 'UA-161530831-1');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta property="og:title" content="ScreenCovid.com Online Covid Screening">
+    <meta property="og:site_name" content="ScreenCovid.com">
+    <meta property="og:url" content="https://screencovid.com">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://screencovid.com/images/covid19.jpg">
+    <title>ScreenCovid.com</title>
 
-  <style>
-    .symptomdescr {
-      font-weight: bold;
-      COLOR: #000;
-      /*padding: 8px;*/
-      padding: 8px 0 14px 0;
-      margin: auto;
-      max-width: 500px;
-    }
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 
-    .info {
-      display: none;
-    }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.min.js"
+            integrity="sha256-MPgtcamIpCPKRRm1ppJHkvtNBAuE71xcOM+MmQytXi8=" crossorigin="anonymous"></script>
+    <script src="gettext.iife.js"></script>
 
-    #container {
-      width: 100%;
-      margin: auto !important;
-      display: block;
-      height: 480px;
-      position: relative;
-      list-style-type: none;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      /*padding: 5px;*/
-    }
+    <style>
+        .symptomdescr {
+            font-weight: bold;
+            COLOR: #000;
+            /*padding: 8px;*/
+            padding: 8px 0 14px 0;
+            margin: auto;
+            max-width: 500px;
+        }
 
-    .buddy {
-      text-align: center;
-      display: none;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      color: #000;
-      width: -webkit-fill-available;
-      padding: 10px;
-      /* margin-left: 10px; */
-      margin: 10px auto;
-      height: auto;
-      max-width: 375px;
-      /* top: 50px; */
-      /* left: 50px; */
-      position: absolute;
-      left: 0;
-      right: 0;
-      cursor: hand;
-    }
+        .info {
+            display: none;
+        }
 
-    .results {
-      text-align: center;
-      display: none;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      color: #000;
-      width: -webkit-fill-available;
-      padding: 10px;
-      /* margin-left: 10px; */
-      margin: 10px auto;
-      height: auto;
-      max-width: 375px;
-      /* top: 50px; */
-      /* left: 50px; */
-      position: absolute;
-      left: 0;
-      right: 0;
-      cursor: hand;
-      font-size: 1.5em;
-    }
+        #container {
+            width: 100%;
+            margin: auto !important;
+            display: block;
+            height: 480px;
+            position: relative;
+            list-style-type: none;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            /*padding: 5px;*/
+        }
 
-    .rotate-left {
-      transform: rotate(30deg) scale(0.8);
-      transition: 1s;
-      /*margin-left: 400px;*/
-      cursor: e-resize;
-      opacity: 0;
-      z-index: 10;
-    }
+        .buddy {
+            text-align: center;
+            display: none;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            color: #000;
+            width: -webkit-fill-available;
+            padding: 10px;
+            /* margin-left: 10px; */
+            margin: 10px auto;
+            height: auto;
+            max-width: 375px;
+            /* top: 50px; */
+            /* left: 50px; */
+            position: absolute;
+            left: 0;
+            right: 0;
+            cursor: hand;
+        }
 
-    .rotate-right {
-      transform: rotate(-30deg) scale(0.8);
-      transition: 1s;
-      opacity: 0;
-      /*margin-left: -400px;*/
-      cursor: w-resize;
-      z-index: 10;
-    }
+        .results {
+            text-align: center;
+            display: none;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            color: #000;
+            width: -webkit-fill-available;
+            padding: 10px;
+            /* margin-left: 10px; */
+            margin: 10px auto;
+            height: auto;
+            max-width: 375px;
+            /* top: 50px; */
+            /* left: 50px; */
+            position: absolute;
+            left: 0;
+            right: 0;
+            cursor: hand;
+            font-size: 1.5em;
+        }
 
-    .avatar {
-      background: rgb(236, 240, 245);
-      ;
-      width: -webkit-fill-available;
-      height: 340px;
-      display: block;
-      /*margin-top: 10px;*/
-      margin-left: 5px;
-      margin-right: 5px;
-      margin-bottom: 10px;
-      background-size: auto 100% !important;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
+        .rotate-left {
+            transform: rotate(30deg) scale(0.8);
+            transition: 1s;
+            /*margin-left: 400px;*/
+            cursor: e-resize;
+            opacity: 0;
+            z-index: 10;
+        }
 
-    .like {
-      border-radius: 5px;
-      padding: 5px 10px;
-      border: 2px solid green;
-      color: green;
-      text-transform: uppercase;
-      font-size: 15px;
-      position: absolute;
-      top: 50px;
-      right: 40px;
-      text-shadow: none;
-    }
+        .rotate-right {
+            transform: rotate(-30deg) scale(0.8);
+            transition: 1s;
+            opacity: 0;
+            /*margin-left: -400px;*/
+            cursor: w-resize;
+            z-index: 10;
+        }
 
-    .dislike {
-      border-radius: 5px;
-      padding: 5px 10px;
-      border: 2px solid red;
-      color: red;
-      text-transform: uppercase;
-      font-size: 15px;
-      position: absolute;
-      top: 50px;
-      left: 40px;
-      text-shadow: none;
-    }
+        .avatar {
+            background: rgb(236, 240, 245);;
+            width: -webkit-fill-available;
+            height: 340px;
+            display: block;
+            /*margin-top: 10px;*/
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            background-size: auto 100% !important;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
-    #total {
-      /*margin: auto !important;*/
-      /* position: fixed; /* or absolute */
-      text-align: center;
-      font-size: 2em;
-    }
+        .like {
+            border-radius: 5px;
+            padding: 5px 10px;
+            border: 2px solid green;
+            color: green;
+            text-transform: uppercase;
+            font-size: 15px;
+            position: absolute;
+            top: 50px;
+            right: 40px;
+            text-shadow: none;
+        }
 
-    #totaldescr {
-      text-align: center;
-      /* font-size: 1.3em; */
-      max-width: 500px;
-      margin: auto;
-    }
+        .dislike {
+            border-radius: 5px;
+            padding: 5px 10px;
+            border: 2px solid red;
+            color: red;
+            text-transform: uppercase;
+            font-size: 15px;
+            position: absolute;
+            top: 50px;
+            left: 40px;
+            text-shadow: none;
+        }
 
-    #instructions {
-      text-align: center;
+        #total {
+            /*margin: auto !important;*/
+            /* position: fixed; /* or absolute */
+            text-align: center;
+            font-size: 2em;
+        }
 
-      padding-top: 25px;
-      font-size: 1.3em;
-    }
+        #totaldescr {
+            text-align: center;
+            /* font-size: 1.3em; */
+            max-width: 500px;
+            margin: auto;
+        }
 
-    #footer {
-      text-align: center;
-      padding: 10px;
-      font-size: 1em;
-    }
+        #instructions {
+            text-align: center;
 
-    .button-yes {
-      width: 150px !important;
-      display: inline-block;
-    }
+            padding-top: 25px;
+            font-size: 1.3em;
+        }
 
-    .button-no {
-      width: 150px !important;
-      display: inline-block;
-    }
+        #footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 1em;
+        }
 
-    .button-outer {
-      width: 100%;
-      text-align: center;
-    }
+        .button-yes {
+            width: 150px !important;
+            display: inline-block;
+        }
 
-    .button-inner {
-      display: inline-block;
-    }
+        .button-no {
+            width: 150px !important;
+            display: inline-block;
+        }
 
-    .checklist-label {
-      text-align: center !important;
-      max-width: 375px !important;
-      margin: 0 auto !important;
-    }
+        .button-outer {
+            width: 100%;
+            text-align: center;
+        }
 
-    .vertical-center {
-      margin: 0;
-      position: absolute;
-      top: 50% !important;
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
-    }
+        .button-inner {
+            display: inline-block;
+        }
 
-    .side-panel-btn {
-      margin: 0 0 0 10px !important; 
-      border-width: 0;
-      background-color: transparent !important;
-    }
+        .checklist-label {
+            text-align: center !important;
+            max-width: 375px !important;
+            margin: 0 auto !important;
+        }
 
-    .side-panel-btn:hover {
-      background-color: #3a84af !important;
-    }
+        .vertical-center {
+            margin: 0;
+            position: absolute;
+            top: 50% !important;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
 
-    .side-panel-btn:active {
-      background-color: #34779e !important;
-    }
+        .side-panel-btn {
+            margin: 0 0 0 10px !important;
+            border-width: 0;
+            background-color: transparent !important;
+        }
 
-    #menu-icon {
-      fill: #fff;
-    }
+        .side-panel-btn:hover {
+            background-color: #3a84af !important;
+        }
 
-    .ui-panel-inner {
-      padding: 0;
-    }
+        .side-panel-btn:active {
+            background-color: #34779e !important;
+        }
 
-    .ui-collapsible-content {
-      padding: 0;
-    }
+        #menu-icon {
+            fill: #fff;
+        }
 
-    .ui-page-theme-a a {
-      font-weight: 400;
-    }
+        .ui-panel-inner {
+            padding: 0;
+        }
 
-    .ui-collapsible-heading .ui-btn {
-      text-align: center;
-    }
+        .ui-collapsible-content {
+            padding: 0;
+        }
 
-    .slide-panel-header {
-      text-align: center;
-      padding: 0 15px 0 15px;
-    }
+        .ui-page-theme-a a {
+            font-weight: 400;
+        }
 
-    .ui-panel-inner .ui-btn {
-      margin: -1px 0;
-    }
+        .ui-collapsible-heading .ui-btn {
+            text-align: center;
+        }
 
-    #virus-img {
-      display: block;
-      margin: auto;
-      border: 3px solid #3c8dbc;
-      border-radius: 25px;
-    }
-  </style>
+        .slide-panel-header {
+            text-align: center;
+            padding: 0 15px 0 15px;
+        }
+
+        .ui-panel-inner .ui-btn {
+            margin: -1px 0;
+        }
+
+        #virus-img {
+            display: block;
+            margin: auto;
+            border: 3px solid #3c8dbc;
+            border-radius: 25px;
+        }
+    </style>
 </head>
 
-
 <body>
-  <div data-role="page">
-
-
-  <script id="covid19-template" type="text/html">
-    <div class="buddy" value="{{value}}" id="{{id}}">
-        <div class="symptomdescr">{{question}}</div>
-        <div class="avatar" style="display: block; background-image: url({{image_url}}); background-size: "></div>
+<div data-role="page">
+    <script id="covid19-template" type="text/html">
+        <div class="buddy" value="{{value}}" id="{{id}}">
+            <div class="symptomdescr">{{question}}</div>
+            <div class="avatar" style="display: block; background-image: url({{image_url}}); background-size: "></div>
             <div class="button-outer">
-          <div class="button-inner"><button class="ui-button ui-widget ui-corner-all button-no" id="no-button">{{no}}</button></div>
-          <div class="button-inner"><button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">{{yes}}</button></div>
-              </div>
-          </div>
-  </script>
-
-  <script>
-
-    var i18n = window.i18n({});
-
-    // default values MUST MATCH EXACTLY the values in the `list_of_questions`.
-    // I used Google Translate for 'es'.
-    // To add a new translation:
-    // - add a new entry for each question with a key that corresponds to the language.
-    // - make sure the language key is the one you tell people to use in the URL
-    // e.g. ?lang=fr or ?lang=es.
-    TRANSLATIONS =
-      [
-        {
-          'default': 'yes',
-          'fr': 'oui',
-          'es': 'sí'
-        },
-        {
-          'default': 'no',
-          'fr': 'non',
-          'es': 'no'
-        },
-        {
-          'default': 'Fever above 37.8C/100F in armpit or forehead?',
-          'fr': 'Fièvre supérieure à 37.8C/100F sous le bras ou sur le front',
-          'es': '¿Fiebre por encima de 37.8C / 100F en la axila o la frente?'
-        },
-        {
-          'default': 'Dry cough?',
-          'fr': 'Toux sèche ?',
-          'es': '¿Tos Seca?'
-        },
-        {
-          'default': 'Fatigue (feeling extra tired)?',
-          'fr': 'Fatigue ?',
-          'es': '¿ Fatiga ?'
-        },
-        {
-          'default': 'No appetite?',
-          'fr': 'Pas d\'apétit ?',
-          'es': '¿ Sin apetito?',
-        },
-        {
-          'default': 'Breathing difficulty?',
-          'fr': 'Difficultés à respirer ?',
-          'es': '¿ Dificultad respiratoria ?',
-        },
-        {
-          'default': 'Sputum (spitting or coughing lung mucus)?',
-          'fr': 'Expectorations',
-          'es': '¿ Esputo ?',
-        },
-        {
-          'default': 'Muscle or bone pain?',
-          'fr': 'Douleur musculaire ou osseuse ?',
-          'es': '¿ Dolor muscular o óseo ?',
-        },
-        {
-          'default': 'Sore throat?',
-          'fr': 'Gorge irritée ?',
-          'es': '¿ Dolor de garganta ?'
-        },
-        {
-          'default': 'Headache or dizziness?',
-          'fr': 'Maux de tête ou vertiges ?',
-          'es': '¿ Dolor de cabeza o mareos?'
-        },
-        {
-          'default': 'Confusion?',
-          'fr': 'Confusion ?',
-          'es': '¿ Confusión ?'
-        },
-        {
-          'default': 'Chills (cold or shivering)?',
-          'fr': 'Frissons ?',
-          'es': '¿ Resfriado ?'
-        },
-        {
-          'default': 'Nausea or vomiting or diarrhea?',
-          'fr': 'Nausées ou vomissements ou diarrhée ?',
-          'es': '¿ Náuseas o vómitos o diarrea ?'
-        },
-        {
-          'default': 'Chronic disease?',
-          'fr': 'Maladie chronique ?',
-          'es': '¿ Enfermedad crónica ?'
-        },
-        {
-          'default': 'Chest pain or chest pressure or irregular heartbeat?',
-          'fr': 'Douleur thoracique ou pression thoracique ou rythme cardiaque irrégulier ?',
-          'es': '¿ Dolor en el pecho o presión en el pecho o latidos cardíacos irregulares ?'
-        },
-        {
-          'default': 'Bluish lips or face?',
-          'fr': 'Lèvres ou visage bleutés ?',
-          'es': '¿ Labios o cara azulados ?'
-        },
-        {
-          'default': 'Older than 50 or younger than 5?',
-          'fr': 'Plus de 60 ans ou moins de 5 ans?',
-          'es': '¿ Mayor de 50 años o menor de 5 ?'
-        }
-      ]
-
-    // 'es': '¿ ?',
-    LANGUAGES = ['fr', 'es'];
-
-    LANGUAGES.forEach(language => {
-      var data = {};
-      TRANSLATIONS.forEach(item => {
-        if (language in item) {
-          data[item['default']] = item[language];
-        }
-      });
-      console.log(data);
-      i18n.setMessages('messages', language, data, 'nplurals=2; plural=n>1;');
-    });
-
-
-    const getQueryParams = (params, url, default_value) => {
-      let href = url;
-      //this expression is to get the query strings
-      let reg = new RegExp('[?&]' + params + '=([^&#]*)', 'i');
-      let queryString = reg.exec(href);
-      return queryString ? queryString[1] : default_value;
-    }; // source: https://dev.to/ganeshmani/how-to-get-query-string-parameters-in-javascript-2019-4dm2 .
-
-    // We extract the language; 'en' is the default one.
-    var lang = getQueryParams('lang', window.location, 'en');
-    console.log(lang)
-    i18n.setLocale(lang); // We set language for the UI.
-
-
-    // TODO: use contant values to make sure `list_of_qestions` and TRANSLATIONS are in sync.
-    var list_of_questions = [
-      { 'id': 'q1', 'value': 90.5, 'question': i18n.gettext('Fever above 37.8C/100F in armpit or forehead?'), 'image_url': 'images/fever.svg' },
-      { 'id': 'q2', 'value': 70.5, 'question': i18n.gettext('Dry cough?'), 'image_url': 'images/cough.svg' },
-      { 'id': 'q3', 'value': 53.5, 'question': i18n.gettext('Fatigue (feeling extra tired)?'), 'image_url': 'images/fatigue.svg' },
-      { 'id': 'q4', 'value': 40, 'question': i18n.gettext('No appetite?'), 'image_url': 'images/no_appetite.svg' },
-      { 'id': 'q5', 'value': 250, 'question': i18n.gettext('Breathing difficulty?'), 'image_url': 'images/difficulty_breathing.svg' },
-      { 'id': 'q6', 'value': 29.5, 'question': i18n.gettext('Sputum (spitting or coughing lung mucus)?'), 'image_url': 'images/sputum.svg' },
-      { 'id': 'q7', 'value': 27.5, 'question': i18n.gettext('Muscle or bone pain?'), 'image_url': 'images/body_pain.svg' },
-      { 'id': 'q8', 'value': 11, 'question': i18n.gettext('Sore throat?'), 'image_url': 'images/sore_throat.svg' },
-      { 'id': 'q9', 'value': 10, 'question': i18n.gettext('Headache or dizziness?'), 'image_url': 'images/headache.svg' },
-      { 'id': 'q10', 'value': 213, 'question': i18n.gettext('Confusion?'), 'image_url': 'images/confusion.svg' },
-      { 'id': 'q11', 'value': 11, 'question': i18n.gettext('Chills (cold or shivering)?'), 'image_url': 'images/chills.svg' },
-      { 'id': 'q12', 'value': 24, 'question': i18n.gettext('Nausea or vomiting or diarrhea?'), 'image_url': 'images/nausea.svg' },
-      { 'id': 'q13', 'value': 51.9, 'question': i18n.gettext('Chronic disease?'), 'image_url': 'images/chronic.svg' },
-      { 'id': 'q14', 'value': 215, 'question': i18n.gettext('Chest pain or chest pressure or irregular heartbeat?'), 'image_url': 'images/heart.svg' },
-      { 'id': 'q15', 'value': 214, 'question': i18n.gettext('Bluish lips or face?'), 'image_url': 'images/blue.svg' },
-      { 'id': 'q16', 'value': 51.9, 'question': i18n.gettext('Older than 50 or younger than 5?'), 'image_url': 'images/man_and_child.svg' },
-    ];
-  </script>
-
-
-  <!-- Side Panel -->
-  <div data-role="panel" id="sidepanel" data-position="left" data-display="overlay" style="background-color: #f9f9f9;">
-    <br>
-    <h2 class="slide-panel-header">COVID-19 Online Screening Tool</h2>
-    <img id="virus-img" src="images/covid19.jpg" alt="COVID-19 Virus" width="50%"> 
-    <h4 class="slide-panel-header">Assess your risk for COVID-19</h4>
-    <br>
-
-    <a href="https://dnahealthmap.shinyapps.io/CovidScreener_v01/" target="_blank" class="ui-btn">Desktop Version</a>
-    
-    <div data-role="collapsible-set" style="margin: 0; border-radius: 0;" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
-      <div data-role="collapsible" data-collapsed="true">
-        <h3>Languages</h3>
-        <div style="margin: 0; border-radius: 0;" class="controlgroup-vertical">
-          <a href="#" onclick="refreshLangQuery('en');" class="ui-btn ui-corner-all">English</a>
-          <a href="#" onclick="refreshLangQuery('es');" class="ui-btn ui-corner-all">Español</a>
-          <a href="#" onclick="refreshLangQuery('fr');" class="ui-btn ui-corner-all">Français</a>
+                <div class="button-inner">
+                    <button class="ui-button ui-widget ui-corner-all button-no" id="no-button">{{no}}</button>
+                </div>
+                <div class="button-inner">
+                    <button id="yes-button" class="ui-button ui-widget ui-corner-all button-yes">{{yes}}</button>
+                </div>
+            </div>
         </div>
-      </div>
+    </script>
+
+    <script>
+        var i18n = window.i18n({});
+
+        // default values MUST MATCH EXACTLY the values in the `list_of_questions`.
+        // I used Google Translate for 'es'.
+        // To add a new translation:
+        // - add a new entry for each question with a key that corresponds to the language.
+        // - make sure the language key is the one you tell people to use in the URL
+        // e.g. ?lang=fr or ?lang=es.
+        TRANSLATIONS =
+            [
+                {
+                    'default': 'yes',
+                    'fr': 'oui',
+                    'es': 'sí',
+                    'hu': 'igen',
+                },
+                {
+                    'default': 'no',
+                    'fr': 'non',
+                    'es': 'no',
+                    'hu': 'nem',
+                },
+                {
+                    'default': 'Fever above 37.8C/100F in armpit or forehead?',
+                    'fr': 'Fièvre supérieure à 37.8C/100F sous le bras ou sur le front',
+                    'es': '¿Fiebre por encima de 37.8C / 100F en la axila o la frente?',
+                    'hu': '37.8C feletti láz?',
+                },
+                {
+                    'default': 'Dry cough?',
+                    'fr': 'Toux sèche ?',
+                    'es': '¿Tos Seca?',
+                    'hu': 'Száraz köhögés?',
+                },
+                {
+                    'default': 'Fatigue (feeling extra tired)?',
+                    'fr': 'Fatigue ?',
+                    'es': '¿ Fatiga ?',
+                    'hu': 'Fáradtság (extra fáradtság)?',
+                },
+                {
+                    'default': 'No appetite?',
+                    'fr': 'Pas d\'apétit ?',
+                    'es': '¿ Sin apetito?',
+                    'hu': 'Étvágytalanság?',
+                },
+                {
+                    'default': 'Breathing difficulty?',
+                    'fr': 'Difficultés à respirer ?',
+                    'es': '¿ Dificultad respiratoria ?',
+                    'hu': 'Légzési nehézség?',
+                },
+                {
+                    'default': 'Sputum (spitting or coughing lung mucus)?',
+                    'fr': 'Expectorations',
+                    'es': '¿ Esputo ?',
+                    'hu': 'Köpetürítés / váladékos köhögés?',
+                },
+                {
+                    'default': 'Muscle or bone pain?',
+                    'fr': 'Douleur musculaire ou osseuse ?',
+                    'es': '¿ Dolor muscular o óseo ?',
+                    'hu': 'Izom- vagy csontfájdalom?',
+                },
+                {
+                    'default': 'Sore throat?',
+                    'fr': 'Gorge irritée ?',
+                    'es': '¿ Dolor de garganta ?',
+                    'hu': 'Torokfájás?',
+                },
+                {
+                    'default': 'Headache or dizziness?',
+                    'fr': 'Maux de tête ou vertiges ?',
+                    'es': '¿ Dolor de cabeza o mareos?',
+                    'hu': 'Fejfájás vagy szédülés?',
+                },
+                {
+                    'default': 'Confusion?',
+                    'fr': 'Confusion ?',
+                    'es': '¿ Confusión ?',
+                    'hu': 'Zavartság?',
+                },
+                {
+                    'default': 'Chills (cold or shivering)?',
+                    'fr': 'Frissons ?',
+                    'es': '¿ Resfriado ?',
+                    'hu': 'Hidegrázás?',
+                },
+                {
+                    'default': 'Nausea or vomiting or diarrhea?',
+                    'fr': 'Nausées ou vomissements ou diarrhée ?',
+                    'es': '¿ Náuseas o vómitos o diarrea ?',
+                    'hu': 'Hányinger/hányás vagy hasmenés?',
+                },
+                {
+                    'default': 'Chronic disease?',
+                    'fr': 'Maladie chronique ?',
+                    'es': '¿ Enfermedad crónica ?',
+                    'hu': 'Krónikus betegség?',
+                },
+                {
+                    'default': 'Chest pain or chest pressure or irregular heartbeat?',
+                    'fr': 'Douleur thoracique ou pression thoracique ou rythme cardiaque irrégulier ?',
+                    'es': '¿ Dolor en el pecho o presión en el pecho o latidos cardíacos irregulares ?',
+                    'hu': 'Mellkasi fájdalom vagy mellkasi nyomás vagy szabálytalan szívverés?',
+                },
+                {
+                    'default': 'Bluish lips or face?',
+                    'fr': 'Lèvres ou visage bleutés ?',
+                    'es': '¿ Labios o cara azulados ?',
+                    'hu': 'Kékes ajkak vagy az arc?',
+                },
+                {
+                    'default': 'Older than 50 or younger than 5?',
+                    'fr': 'Plus de 60 ans ou moins de 5 ans?',
+                    'es': '¿ Mayor de 50 años o menor de 5 ?',
+                    'hu': 'Idősebb mint 50 vagy fiatalabb mint 5?',
+                }
+            ]
+
+        // 'es': '¿ ?',
+        LANGUAGES = ['fr', 'es', 'hu'];
+
+        LANGUAGES.forEach(language => {
+            var data = {};
+            TRANSLATIONS.forEach(item => {
+                if (language in item) {
+                    data[item['default']] = item[language];
+                }
+            });
+            console.log(data);
+            i18n.setMessages('messages', language, data, 'nplurals=2; plural=n>1;');
+        });
+
+
+        const getQueryParams = (params, url, default_value) => {
+            let href = url;
+            //this expression is to get the query strings
+            let reg = new RegExp('[?&]' + params + '=([^&#]*)', 'i');
+            let queryString = reg.exec(href);
+            return queryString ? queryString[1] : default_value;
+        }; // source: https://dev.to/ganeshmani/how-to-get-query-string-parameters-in-javascript-2019-4dm2 .
+
+        // We extract the language; 'en' is the default one.
+        var lang = getQueryParams('lang', window.location, 'en');
+        console.log(lang)
+        i18n.setLocale(lang); // We set language for the UI.
+
+
+        // TODO: use contant values to make sure `list_of_qestions` and TRANSLATIONS are in sync.
+        var list_of_questions = [
+            {
+                'id': 'q1',
+                'value': 90.5,
+                'question': i18n.gettext('Fever above 37.8C/100F in armpit or forehead?'),
+                'image_url': 'images/fever.svg'
+            },
+            {'id': 'q2', 'value': 70.5, 'question': i18n.gettext('Dry cough?'), 'image_url': 'images/cough.svg'},
+            {
+                'id': 'q3',
+                'value': 53.5,
+                'question': i18n.gettext('Fatigue (feeling extra tired)?'),
+                'image_url': 'images/fatigue.svg'
+            },
+            {'id': 'q4', 'value': 40, 'question': i18n.gettext('No appetite?'), 'image_url': 'images/no_appetite.svg'},
+            {
+                'id': 'q5',
+                'value': 250,
+                'question': i18n.gettext('Breathing difficulty?'),
+                'image_url': 'images/difficulty_breathing.svg'
+            },
+            {
+                'id': 'q6',
+                'value': 29.5,
+                'question': i18n.gettext('Sputum (spitting or coughing lung mucus)?'),
+                'image_url': 'images/sputum.svg'
+            },
+            {
+                'id': 'q7',
+                'value': 27.5,
+                'question': i18n.gettext('Muscle or bone pain?'),
+                'image_url': 'images/body_pain.svg'
+            },
+            {'id': 'q8', 'value': 11, 'question': i18n.gettext('Sore throat?'), 'image_url': 'images/sore_throat.svg'},
+            {
+                'id': 'q9',
+                'value': 10,
+                'question': i18n.gettext('Headache or dizziness?'),
+                'image_url': 'images/headache.svg'
+            },
+            {'id': 'q10', 'value': 213, 'question': i18n.gettext('Confusion?'), 'image_url': 'images/confusion.svg'},
+            {
+                'id': 'q11',
+                'value': 11,
+                'question': i18n.gettext('Chills (cold or shivering)?'),
+                'image_url': 'images/chills.svg'
+            },
+            {
+                'id': 'q12',
+                'value': 24,
+                'question': i18n.gettext('Nausea or vomiting or diarrhea?'),
+                'image_url': 'images/nausea.svg'
+            },
+            {
+                'id': 'q13',
+                'value': 51.9,
+                'question': i18n.gettext('Chronic disease?'),
+                'image_url': 'images/chronic.svg'
+            },
+            {
+                'id': 'q14',
+                'value': 215,
+                'question': i18n.gettext('Chest pain or chest pressure or irregular heartbeat?'),
+                'image_url': 'images/heart.svg'
+            },
+            {
+                'id': 'q15',
+                'value': 214,
+                'question': i18n.gettext('Bluish lips or face?'),
+                'image_url': 'images/blue.svg'
+            },
+            {
+                'id': 'q16',
+                'value': 51.9,
+                'question': i18n.gettext('Older than 50 or younger than 5?'),
+                'image_url': 'images/man_and_child.svg'
+            },
+        ];
+    </script>
+
+    <!-- Side Panel -->
+    <div data-role="panel" id="sidepanel" data-position="left" data-display="overlay"
+         style="background-color: #f9f9f9;">
+        <br>
+        <h2 class="slide-panel-header">COVID-19 Online Screening Tool</h2>
+        <img id="virus-img" src="images/covid19.jpg" alt="COVID-19 Virus" width="50%">
+        <h4 class="slide-panel-header">Assess your risk for COVID-19</h4>
+        <br>
+
+        <a href="https://dnahealthmap.shinyapps.io/CovidScreener_v01/" target="_blank" class="ui-btn">Desktop
+            Version</a>
+
+        <div data-role="collapsible-set" style="margin: 0; border-radius: 0;" data-collapsed-icon="carat-r"
+             data-expanded-icon="carat-d">
+            <div data-role="collapsible" data-collapsed="true">
+                <h3>Languages</h3>
+                <div style="margin: 0; border-radius: 0;" class="controlgroup-vertical">
+                    <a href="#" onclick="refreshLangQuery('en');" class="ui-btn ui-corner-all">English</a>
+                    <a href="#" onclick="refreshLangQuery('es');" class="ui-btn ui-corner-all">Español</a>
+                    <a href="#" onclick="refreshLangQuery('fr');" class="ui-btn ui-corner-all">Français</a>
+                    <a href="#" onclick="refreshLangQuery('hu');" class="ui-btn ui-corner-all">Magyar</a>
+                </div>
+            </div>
+        </div>
+
+        <a href="https://www.screencovid.org/" target="_blank" class="ui-btn">About This Tool</a>
+        <a href="https://findcovidtesting.com/" target="_blank" class="ui-btn">COVID-19 Test Locations</a>
     </div>
 
-    <a href="https://www.screencovid.org/" target="_blank" class="ui-btn">About This Tool</a>
-    <a href="https://findcovidtesting.com/" target="_blank" class="ui-btn">COVID-19 Test Locations</a>
-  </div>
-  <script>
-    function refreshLangQuery(lang) {
-      window.location.href = window.location.pathname + "?" + $.param({'lang': lang})
-    }
-  </script>
+    <script>
+        function refreshLangQuery(lang) {
+            window.location.href = window.location.pathname + "?" + $.param({'lang': lang})
+        }
+    </script>
 
-  <!-- Toolbar -->
-  <div data-role="header" style="background-color: #3c8dbc; border: none;">
-    <a class="side-panel-btn vertical-center ui-btn-left ui-btn ui-btn-inline  ui-corner-all" href="#sidepanel">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 8 8">
-        <path id="menu-icon" d="M0 0v1h8v-1h-8zm0 2.97v1h8v-1h-8zm0 3v1h8v-1h-8z" transform="translate(0 1)" />
-      </svg>
-    </a>
-    <h1 style="text-shadow: none; color: #fff; font-size: 20px; padding: .6em 0; font-weight: 300; margin: 0 10%;">
-      COVID-PreScreener</h1>
-  </div>
-
-  </br>
-
-  <!-- Questionaire -->
-  <div id="container">
-
-    <div id="questions"></div>
-
-    <div class="results" id="results"></div>
-
-  </div>
-
-  <!-- Symptom Checklist -->
-  <div class="widget">
-    <div id="checklist" class="controlgroup-vertical">
+    <!-- Toolbar -->
+    <div data-role="header" style="background-color: #3c8dbc; border: none;">
+        <a class="side-panel-btn vertical-center ui-btn-left ui-btn ui-btn-inline  ui-corner-all" href="#sidepanel">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 8 8">
+                <path id="menu-icon" d="M0 0v1h8v-1h-8zm0 2.97v1h8v-1h-8zm0 3v1h8v-1h-8z" transform="translate(0 1)"/>
+            </svg>
+        </a>
+        <h1 style="text-shadow: none; color: #fff; font-size: 20px; padding: .6em 0; font-weight: 300; margin: 0 10%;">
+            COVID-PreScreener</h1>
     </div>
-  </div>
-  </br>
 
-  <div id="totaldescr">
-    <p class="info lang-en">If you’re experiencing a life- or limb-threatening emergency, call 911 or the number for
-      your
-      local
-      emergency
-      service.
-      This tool is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a medical
-      professional for serious symptoms or emergencies. If the total exceeds 212, consult a doctor immediately</p>
-    <p class="info lang-es">Si tiene una emergencia que amenaza la vida o las extremidades, llame al 911 o al número de
-      su
-      local emergencia Servicio.
-      Esta herramienta no sustituye el consejo, el diagnóstico o el tratamiento médico profesional. Siempre consulte a
-      un médico
-      profesional para síntomas graves o emergencias. Si el total excede 212, consulte a un médico inmediatamente</p>
-    <p class="info lang-fr">Si vous vivez une urgence mettant en jeu votre vie ou vos membres, composez le 911 ou le
-      numéro
-      de votre
-      service d'urgence le plus proche.
-      Cet outil ne remplace pas les conseils, le diagnostic ou les traitement médicaux professionnels. Consultez
-      toujours un médecin
-      professionnel pour les symptômes graves ou les urgences. Si le total dépasse 212, consultez immédiatement un
-      médecin !</p>
-  </div>
-  <div id="total" class="total">
-  </div>
+    </br>
 
-  <div id="footer" class="footer">
-    <p>Algorithm created by Sajung Yun, Ph.D & Sijung Yun, Ph.D (Bioinformatics adjunct professors, Johns Hopkins
-      University)<p>
+    <!-- Questionaire -->
+    <div id="container">
+        <div id="questions"></div>
+        <div class="results" id="results"></div>
+    </div>
+
+    <!-- Symptom Checklist -->
+    <div class="widget">
+        <div id="checklist" class="controlgroup-vertical">
+        </div>
+    </div>
+    </br>
+
+    <div id="totaldescr">
+        <p class="info lang-en">If you’re experiencing a life- or limb-threatening emergency, call 911 or the number for
+            your
+            local
+            emergency
+            service.
+            This tool is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a
+            medical
+            professional for serious symptoms or emergencies. If the total exceeds 212, consult a doctor immediately</p>
+        <p class="info lang-es">Si tiene una emergencia que amenaza la vida o las extremidades, llame al 911 o al número
+            de
+            su
+            local emergencia Servicio.
+            Esta herramienta no sustituye el consejo, el diagnóstico o el tratamiento médico profesional. Siempre
+            consulte a
+            un médico
+            profesional para síntomas graves o emergencias. Si el total excede 212, consulte a un médico
+            inmediatamente</p>
+        <p class="info lang-fr">Si vous vivez une urgence mettant en jeu votre vie ou vos membres, composez le 911 ou le
+            numéro
+            de votre
+            service d'urgence le plus proche.
+            Cet outil ne remplace pas les conseils, le diagnostic ou les traitement médicaux professionnels. Consultez
+            toujours un médecin
+            professionnel pour les symptômes graves ou les urgences. Si le total dépasse 212, consultez immédiatement un
+            médecin !</p>
+        <p class="info lang-hu">Ez NEM egy hivatalos, hitelesített teszt, csak a tünetek felismerését segíti! Amennyiben
+            valójában tüneteket észlel magán jelentkezzen háziorvosánál!
+            212 pont felett érdemes mielőbb konzultálnia háziorvosával!</p>
+    </div>
+    <div id="total" class="total">
+    </div>
+
+    <div id="footer" class="footer">
+        <p>Algorithm created by Sajung Yun, Ph.D & Sijung Yun, Ph.D (Bioinformatics adjunct professors, Johns Hopkins
+            University)
+        <p>
         <p>More info at <a href="https://www.screencovid.org">ScreenCovid.org</a></p>
         <p>Find testing locations at <a href="https://findcovidtesting.com/">https://findcovidtesting.com</a>
-          <p>
-            <p><a href="https://github.com/tconley/screencovid.com/"><img
-                  src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="30">Contribute
-                to make this app better.</a>
-              <p>
-  </div>
+        <p>
+        <p><a href="https://github.com/tconley/screencovid.com/"><img
+                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="30">Contribute
+            to make this app better.</a>
+        <p>
+    </div>
 
-  <div id="test-area"></div>
+    <div id="test-area"></div>
 
-  <script>
-    function showResults() {
-      $('#results').css("display", "block");
-    }
-
-
-    function updateResults(totalscore) {
-
-      if (totalscore > 212) {
-        $("#results").text("Your score of " + totalscore.toFixed(1) + " indicates that you should consult a doctor immediately");
-      } else {
-        $("#results").text("Your score of " + totalscore.toFixed(1) + " is below the threshold for COVID-19 pre-screening. However, if you have Difficulty Breathing, Chest Pain, Pressure, or Irregular Heartbeat, Bluish Lips, or Confusion, you should seek medical attention immediately.");
-      }
-
-      if ($("#results").css("display") == "block") {
-        $('#container').css("height", $("#results").css("height"));
-        $('#container').height("+=50");
-      }
-    }
-
-    /* Display new checkbox and format style */
-    displayCheckbox = function (h, ph) {
-      $("#" + h + "-label").css('display', 'block').css('border-bottom-width', '1px')
-        .css('border-bottom-left-radius', '5px').css('border-bottom-right-radius', '5px');
-      $("#" + ph + "-label").css('border-bottom-width', '0px')
-        .css('border-bottom-left-radius', '0px').css('border-bottom-right-radius', '0px');
-      return h;
-    };
-
-
-
-
-
-
-    $(document).ready(function () {
-
-      var prev_checkbox_id = ""
-
-      // We display the correct warning message.
-      $('.info').hide(); // We hide all info messages.
-      $('.info' + '.lang-' + lang).show(); // We display the one for the selected language.
-
-      // We load the questions from template + JSON.
-      var template = $('#covid19-template').html();
-      $.each(list_of_questions, function (index, value) {
-        value['yes'] = i18n.gettext('yes');
-        value['no'] = i18n.gettext('no');
-        var html = Mustache.to_html(template, value);
-        $('#questions').append(html);
-      });
-      $('#q1').css("display", "block"); // First question gets the focus.
-
-
-      $('.button-yes').on('click', function () {
-        $(this).attr('disabled', true);
-        $(this).parent().parent().parent().swiperight();
-      });
-
-      $('.button-no').on('click', function () {
-        $(this).attr('disabled', true);
-        $(this).parent().parent().parent().swipeleft();
-      });
-
-      var totalscore = 0;
-      $("#total").text(totalscore.toFixed(1));
-
-
-
-      $(".buddy").one("swiperight", function () {
-        totalscore = totalscore + parseFloat($(this).attr('value'));
-
-        $("#total").text(totalscore.toFixed(1));
-        $(this).addClass('rotate-left').delay(700).fadeOut(1);
-        $('.buddy').find('.status').remove();
-
-        $(this).append('<div class="status like">Yes!</div>');
-
-        /* Add item to checklist */
-        var checkbox_id = $(this).attr('id');
-        $("#" + checkbox_id + "-input").prop("checked", true).checkboxradio('refresh');
-        prev_checkbox_id = displayCheckbox(checkbox_id, prev_checkbox_id);
-
-        if ($(this).is(':last-child')) {
-          //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
-          //alert('message here that we are done');
-          //after survey is done additional messages should be displayed about next steps
-          showResults();
-          updateResults(totalscore);
-        } else {
-          $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
+    <script>
+        function showResults() {
+            $('#results').css("display", "block");
         }
 
-      });
+        function updateResults(totalscore) {
+            if (totalscore > 212) {
+                $("#results").text("Your score of " + totalscore.toFixed(1) + " indicates that you should consult a doctor immediately");
+            } else {
+                $("#results").text("Your score of " + totalscore.toFixed(1) + " is below the threshold for COVID-19 pre-screening. However, if you have Difficulty Breathing, Chest Pain, Pressure, or Irregular Heartbeat, Bluish Lips, or Confusion, you should seek medical attention immediately.");
+            }
 
-      $(".buddy").one("swipeleft", function () {
-        $(this).addClass('rotate-right').delay(700).fadeOut(1);
-        $('.buddy').find('.status').remove();
-        $(this).append('<div class="status dislike">No!</div>');
-
-        /* Add item to checklist */
-        var checkbox_id = $(this).attr('id');
-        prev_checkbox_id = displayCheckbox(checkbox_id, prev_checkbox_id);
-
-        if ($(this).is(':last-child')) {
-          //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
-          //alert('message here that we are done');
-          //after survey is done additional messages should be displayed about next steps
-
-          showResults();
-          updateResults(totalscore);
-        } else {
-          $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
+            if ($("#results").css("display") == "block") {
+                $('#container').css("height", $("#results").css("height"));
+                $('#container').height("+=50");
+            }
         }
 
-      });
+        /* Display new checkbox and format style */
+        displayCheckbox = function (h, ph) {
+            $("#" + h + "-label").css('display', 'block').css('border-bottom-width', '1px')
+                .css('border-bottom-left-radius', '5px').css('border-bottom-right-radius', '5px');
+            $("#" + ph + "-label").css('border-bottom-width', '0px')
+                .css('border-bottom-left-radius', '0px').css('border-bottom-right-radius', '0px');
+            return h;
+        };
+
+        $(document).ready(function () {
+            var prev_checkbox_id = "";
+            // We display the correct warning message.
+            $('.info').hide(); // We hide all info messages.
+            $('.info' + '.lang-' + lang).show(); // We display the one for the selected language.
+
+            // We load the questions from template + JSON.
+            var template = $('#covid19-template').html();
+            $.each(list_of_questions, function (index, value) {
+                value['yes'] = i18n.gettext('yes');
+                value['no'] = i18n.gettext('no');
+                var html = Mustache.to_html(template, value);
+                $('#questions').append(html);
+            });
+            $('#q1').css("display", "block"); // First question gets the focus.
 
 
-      /* Generate symptom checklist */
-      list_of_questions.forEach(function (item) {
-        var input_id = item.id + "-input";
-        var label_id = item.id + "-label";
-        var list_item = '<label class="checklist-label" style="display: none;" id="' +
-          label_id + '" for="' + input_id + '">' + item.question + '</label>' +
-          '<input style="display: none;" type="checkbox" id="' + input_id + '" value="' + item.value + '">';
-        $("#checklist").append(list_item);
-        $("#" + input_id).on('change', function () {
-          var symptom_value = item.value;
-          totalscore += $("#" + label_id).hasClass("ui-checkbox-on") ? -symptom_value : symptom_value;
-          $("#total").text(totalscore.toFixed(1));
-          updateResults(totalscore);
+            $('.button-yes').on('click', function () {
+                $(this).attr('disabled', true);
+                $(this).parent().parent().parent().swiperight();
+            });
+
+            $('.button-no').on('click', function () {
+                $(this).attr('disabled', true);
+                $(this).parent().parent().parent().swipeleft();
+            });
+
+            var totalscore = 0;
+            $("#total").text(totalscore.toFixed(1));
+
+
+            $(".buddy").one("swiperight", function () {
+                totalscore = totalscore + parseFloat($(this).attr('value'));
+
+                $("#total").text(totalscore.toFixed(1));
+                $(this).addClass('rotate-left').delay(700).fadeOut(1);
+                $('.buddy').find('.status').remove();
+
+                $(this).append('<div class="status like">Yes!</div>');
+
+                /* Add item to checklist */
+                var checkbox_id = $(this).attr('id');
+                $("#" + checkbox_id + "-input").prop("checked", true).checkboxradio('refresh');
+                prev_checkbox_id = displayCheckbox(checkbox_id, prev_checkbox_id);
+
+                if ($(this).is(':last-child')) {
+                    //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
+                    //alert('message here that we are done');
+                    //after survey is done additional messages should be displayed about next steps
+                    showResults();
+                    updateResults(totalscore);
+                } else {
+                    $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
+                }
+
+            });
+
+            $(".buddy").one("swipeleft", function () {
+                $(this).addClass('rotate-right').delay(700).fadeOut(1);
+                $('.buddy').find('.status').remove();
+                $(this).append('<div class="status dislike">No!</div>');
+
+                /* Add item to checklist */
+                var checkbox_id = $(this).attr('id');
+                prev_checkbox_id = displayCheckbox(checkbox_id, prev_checkbox_id);
+
+                if ($(this).is(':last-child')) {
+                    //$('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
+                    //alert('message here that we are done');
+                    //after survey is done additional messages should be displayed about next steps
+
+                    showResults();
+                    updateResults(totalscore);
+                } else {
+                    $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
+                }
+
+            });
+
+
+            /* Generate symptom checklist */
+            list_of_questions.forEach(function (item) {
+                var input_id = item.id + "-input";
+                var label_id = item.id + "-label";
+                var list_item = '<label class="checklist-label" style="display: none;" id="' +
+                    label_id + '" for="' + input_id + '">' + item.question + '</label>' +
+                    '<input style="display: none;" type="checkbox" id="' + input_id + '" value="' + item.value + '">';
+                $("#checklist").append(list_item);
+                $("#" + input_id).on('change', function () {
+                    var symptom_value = item.value;
+                    totalscore += $("#" + label_id).hasClass("ui-checkbox-on") ? -symptom_value : symptom_value;
+                    $("#total").text(totalscore.toFixed(1));
+                    updateResults(totalscore);
+                });
+            });
+
+            $(function () {
+                $(".controlgroup-vertical").controlgroup({
+                    "direction": "vertical"
+                });
+            });
         });
-      });
-      $(function () {
-        $(".controlgroup-vertical").controlgroup({
-          "direction": "vertical"
-        });
-      });
+    </script>
+</div> <!-- page -->
 
-    });
-  </script>
-
-
-  </div> <!-- page -->
 </body>
-
 </html>
