@@ -8,9 +8,9 @@
 This project is based off a phone call I (@tconley) had with Sajung Yun, PhD. He is very much interested in saving lives, and has analyzed the data available to come up with a simple formula for a screener. Read Dr. Yun's findings and rationale behind the screening [in this presentation (PDF)](https://github.com/tconley/screencovid.com/raw/master/Presentation_Prescreencovid_v9_03202020.pdf).
 
 ## Development
-The screening tool is hosted with GitHub Pages via the `/docs` folder using static HTML, CSS, and JS. Merged changes will automatically be pushed live.
+The mobile screening tool is hosted with GitHub Pages via the `/docs` folder using static HTML, CSS, and JS (jQuery). Merged changes will automatically be pushed live.
 
-The website is made with Wix and cannot be updated from this repo.
+The text-based (“Desktop”) screener is a [Shiny](https://shiny.rstudio.com/) app. The informational website (ScreenCovid.**org**) is made with Wix. Those sites cannot be updated from this repo.
 
 
 ## How can you help?
