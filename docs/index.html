@@ -344,6 +344,26 @@
                     'vi': 'Không',
                 },
                 {
+                    'default': 'Your score is below the threshold for COVID-19 pre-screening. However, if you have Difficulty Breathing, Chest Pain, Pressure, or Irregular Heartbeat, Bluish Lips, or Confusion, you should seek medical attention immediately.',
+                    'fr': 'Votre score est inférieur au seuil de présélection du COVID-19. Cependant, si vous avez des difficultés respiratoires, une douleur thoracique, une pression ou un rythme cardiaque irrégulier, des lèvres bleutées ou une confusion, vous devez consulter immédiatement un médecin.',
+                    'es': 'Su puntaje está por debajo del umbral para la detección previa de COVID-19. Sin embargo, si tiene dificultad para respirar, dolor en el pecho, presión o latidos cardíacos irregulares, labios azulados o confusión, debe buscar atención médica de inmediato.',
+                    'hu': 'Az Ön pontszáma azt jelzi, hogy azonnal forduljon orvoshoz.',
+                    'pl': 'Twój wynik jest poniżej progu wstępnego badania COVID-19. Jeśli jednak masz trudności z oddychaniem, ból w klatce piersiowej, ucisk lub nieregularne bicie serca, niebieskawe usta lub splątanie, natychmiast skontaktuj się z lekarzem.',
+                    'kr': '점수가 COVID-19 사전 선별 기준점 미만입니다. 그러나 호흡 곤란, 흉통, 압박 또는 불규칙한 심장 박동, 푸른 입술 또는 혼동이있는 경우 즉시 의사의 진료를 받아야합니다.',
+                    'de': 'Ihre Punktzahl liegt unter dem Schwellenwert für das COVID-19-Vorscreening. Wenn Sie jedoch Atembeschwerden, Brustschmerzen, Druck oder unregelmäßigen Herzschlag, bläuliche Lippen oder Verwirrtheit haben, sollten Sie sofort einen Arzt aufsuchen.',
+                    'vi': 'Điểm của bạn dưới ngưỡng sàng lọc trước COVID-19. Tuy nhiên, nếu bạn khó thở, đau ngực, áp lực hoặc nhịp tim không đều, môi hơi xanh hoặc nhầm lẫn, bạn nên đi khám ngay lập tức.',
+                },
+                {
+                    'default': 'Your score indicates that you should consult a doctor immediately.',
+                    'fr': 'Votre score indique que vous devez consulter immédiatement un médecin.',
+                    'es': 'Su puntaje indica que debe consultar a un médico de inmediato.',
+                    'hu': 'Pontszámod nem éri el a COVID-19 előszűrés küszöbértékét. Ha azonban nehéz légzés, mellkasi fájdalom, nyomás vagy szabálytalan szívverés, kékes ajkak vagy zavart van, akkor azonnal forduljon orvoshoz.',
+                    'pl': 'Twój wynik wskazuje, że należy natychmiast skonsultować się z lekarzem.',
+                    'kr': '결과는 즉시 의사와 상담해야한다는 것을 나타냅니다.',
+                    'de': 'Ihre Ergebnisse zeigen, dass Sie sofort einen Arzt konsultieren sollten.',
+                    'vi': 'Kết quả của bạn chỉ ra rằng bạn nên tham khảo ý kiến ​​bác sĩ ngay lập tức.',
+                },
+                {
                     'default': 'Fever above 37.8C/100F in armpit or forehead?',
                     'fr': 'Fièvre supérieure à 37.8C/100F sous le bras ou sur le front',
                     'es': '¿Fiebre por encima de 37.8C / 100F en la axila o la frente?',
@@ -764,9 +784,9 @@
 
         function updateResults(totalscore) {
             if (totalscore > 212) {
-                $("#results").text("Based on your answers, you should consult a doctor immediately");
+                $("#results").text(i18n.gettext("Your score indicates that you should consult a doctor immediately."));
             } else {
-                $("#results").text("Your answers indicate you are below the threshold for COVID-19 pre-screening. However, if you have Difficulty Breathing, Chest Pain, Pressure, or Irregular Heartbeat, Bluish Lips, or Confusion, you should seek medical attention immediately.");
+                $("#results").text(i18n.gettext("Your score is below the threshold for COVID-19 pre-screening. However, if you have Difficulty Breathing, Chest Pain, Pressure, or Irregular Heartbeat, Bluish Lips, or Confusion, you should seek medical attention immediately."));
             }
 
             if ($("#results").css("display") == "block") {
