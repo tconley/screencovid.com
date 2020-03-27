@@ -294,22 +294,6 @@
             border: 3px solid #3c8dbc;
             border-radius: 25px;
         }
-
-        .lang-button-group div a {
-          text-align: left;
-          padding-left: 2.5em;
-          background-color: #efefef !important;
-        }
-
-        .lang-button-group div a:hover {
-          background-color: #e0e0e0 !important;
-        }
-
-        .lang-button-group div a::after {
-          background-color: transparent !important;
-          padding-right: 5em;
-          border-radius: 0;
-        }
     </style>
 </head>
 
@@ -609,7 +593,7 @@
                 lang = 'en';
             }                   
         }
-        
+
         // TODO: use contant values to make sure `list_of_qestions` and TRANSLATIONS are in sync.
         var list_of_questions = [
             {
@@ -731,6 +715,9 @@
     </div>
 
     <script>
+        // Style the selected language's respective button in the side-panel
+        $(".ui-icon-" + lang).addClass("active-lang-button");
+        
         function refreshLangQuery(lang) {
             window.location.href = window.location.pathname + "?" + $.param({'lang': lang})
         }
