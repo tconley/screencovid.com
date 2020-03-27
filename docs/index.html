@@ -657,14 +657,9 @@
     </br>
 
     <div id="totaldescr">
-        <p class="info lang-en">If you’re experiencing a life- or limb-threatening emergency, call 911 or the number for
-            your
-            local
-            emergency
-            service.
-            This tool is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a
-            medical
-            professional for serious symptoms or emergencies. If the total exceeds 212, consult a doctor immediately</p>
+        <p class="info lang-en">If you’re experiencing a life- or limb-threatening emergency, call 911 or the number for your
+            local emergency service. This tool is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a
+            medical professional for serious symptoms or emergencies. </p>
         <p class="info lang-es">Si tiene una emergencia que amenaza la vida o las extremidades, llame al 911 o al número
             de
             su
@@ -672,19 +667,17 @@
             Esta herramienta no sustituye el consejo, el diagnóstico o el tratamiento médico profesional. Siempre
             consulte a
             un médico
-            profesional para síntomas graves o emergencias. Si el total excede 212, consulte a un médico
-            inmediatamente</p>
+            profesional para síntomas graves o emergencias. </p>
         <p class="info lang-fr">Si vous vivez une urgence mettant en jeu votre vie ou vos membres, composez le 911 ou le
             numéro
             de votre
             service d'urgence le plus proche.
             Cet outil ne remplace pas les conseils, le diagnostic ou les traitement médicaux professionnels. Consultez
             toujours un médecin
-            professionnel pour les symptômes graves ou les urgences. Si le total dépasse 212, consultez immédiatement un
-            médecin !</p>
+            professionnel pour les symptômes graves ou les urgences.</p>
         <p class="info lang-hu">Ez NEM egy hivatalos, hitelesített teszt, csak a tünetek felismerését segíti! Amennyiben
             valójában tüneteket észlel magán jelentkezzen háziorvosánál!
-            212 pont felett érdemes mielőbb konzultálnia háziorvosával!</p>
+            </p>
             <p class="info lang-pl">Jeśli zdarza się sytuacja zagrożenia życia lub kończyny, zadzwoń pod numer 911 lub zadzwoń pod lokalny numer alarmowy. To narzędzie nie zastępuje profesjonalnej porady medycznej, diagnozy ani leczenia. Zawsze skonsultuj się z lekarzem w przypadku poważnych objawów lub nagłych wypadków.</p>
              <p class="info lang-kr">
                만약 생명이 위급한 증상을 느끼신다면 지금 바로 119에 연락하십시오. 이 온라인 테스트는 의사 선생님들의 의학적 권고, 진단, 또는 처방을 대신할 수 없습니다. 중증이나 위급한 상황에서는 항상 의사 선생님께 도움을 받으십시오.
@@ -718,9 +711,9 @@
 
         function updateResults(totalscore) {
             if (totalscore > 212) {
-                $("#results").text("Your score of " + totalscore.toFixed(1) + " indicates that you should consult a doctor immediately");
+                $("#results").text("Based on your answers, you should consult a doctor immediately");
             } else {
-                $("#results").text("Your score of " + totalscore.toFixed(1) + " is below the threshold for COVID-19 pre-screening. However, if you have Difficulty Breathing, Chest Pain, Pressure, or Irregular Heartbeat, Bluish Lips, or Confusion, you should seek medical attention immediately.");
+                $("#results").text("Your answers indicate you are below the threshold for COVID-19 pre-screening. However, if you have Difficulty Breathing, Chest Pain, Pressure, or Irregular Heartbeat, Bluish Lips, or Confusion, you should seek medical attention immediately.");
             }
 
             if ($("#results").css("display") == "block") {
@@ -766,13 +759,13 @@
             });
 
             var totalscore = 0;
-            $("#total").text(totalscore.toFixed(1));
+            //$("#total").text(totalscore.toFixed(1));
 
 
             $(".buddy").one("swiperight", function () {
                 totalscore = totalscore + parseFloat($(this).attr('value'));
 
-                $("#total").text(totalscore.toFixed(1));
+                //$("#total").text(totalscore.toFixed(1));
                 $(this).addClass('rotate-left').delay(700).fadeOut(1);
                 $('.buddy').find('.status').remove();
 
@@ -829,7 +822,7 @@
                 $("#" + input_id).on('change', function () {
                     var symptom_value = item.value;
                     totalscore += $("#" + label_id).hasClass("ui-checkbox-on") ? -symptom_value : symptom_value;
-                    $("#total").text(totalscore.toFixed(1));
+                    //$("#total").text(totalscore.toFixed(1));
                     updateResults(totalscore);
                 });
             });
