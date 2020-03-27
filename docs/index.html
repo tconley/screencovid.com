@@ -670,7 +670,7 @@
                 'id': 'q17',
                 'value': 15,
                 'question': i18n.gettext('Loss of smell or taste?'),
-                'image_url': 'images/blue.svg'
+                'image_url': 'images/no_smell.svg'
             },
             {
                 'id': 'q16',
@@ -717,7 +717,7 @@
     <script>
         // Style the selected language's respective button in the side-panel
         $(".ui-icon-" + lang).addClass("active-lang-button");
-        
+
         function refreshLangQuery(lang) {
             window.location.href = window.location.pathname + "?" + $.param({'lang': lang})
         }
