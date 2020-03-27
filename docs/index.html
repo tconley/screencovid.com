@@ -561,6 +561,11 @@
         // We extract the language; 'en' is the default one.
         var lang = getQueryParams('lang', window.location, 'en');
         //console.log(lang)
+
+        if (LANGUAGES.indexOf(lang) === -1) { // if the language in the lang query is not one that we support (not found in LANGUAGES array)
+            lang = 'en';   
+        } 
+        //console.log(lang)
         i18n.setLocale(lang); // We set language for the UI.
 
         function findGetParameter(parameterName) {
@@ -576,18 +581,17 @@
             return result;
         }
         //console.log( window.navigator.language.slice(0, 2));
-        /*
-        if the url did not specify a language with the lang? in the query, then check the browsers default langage and see if that is one of the languages we have in the LANGUAGE array
+     
+        //if the url did not specify a language with the lang? in the query, then check the browsers default langage and see if that is one of the languages we have in the LANGUAGES array
         if (findGetParameter('lang') == null && window.navigator.language.slice(0, 2) !== 'en' ) {
-                   
+            lang = window.navigator.language.slice(0, 2);
+            if (LANGUAGES.indexOf(lang) != -1) {
+                i18n.setLocale(window.navigator.language.slice(0, 2));    // for now we're not checking the LANGUAGES array
+            } else {
+                lang = 'en';
+            }                   
         }
-        */
-
-/*        if (window.navigator.language.slice(0, 2) !== 'en') {       
-  add logic to switch language here  based on LANGUAGES 
-}
-*/
-
+        
         // TODO: use contant values to make sure `list_of_qestions` and TRANSLATIONS are in sync.
         var list_of_questions = [
             {
