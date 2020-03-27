@@ -15,13 +15,13 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
-    <meta property="og:title" content="ScreenCovid.com Online Covid Screening">
+    <meta property="og:title" content="ScreenCovid.com Online COVID-19 Screening">
     <meta property="og:site_name" content="ScreenCovid.com">
     <meta property="og:url" content="https://screencovid.com">
-    <meta property="og:description" content="">
+    <meta property="og:description" content="Assess your risk for COVID-19 with this screening tool that quizzes your symptoms.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://screencovid.com/images/covid19.jpg">
-    <title>ScreenCovid.com</title>
+    <title>ScreenCovid.com | Online COVID-19 Screening</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
@@ -33,6 +33,18 @@
     <script src="gettext.iife.js"></script>
 
     <style>
+      html {
+        box-sizing: border-box;
+      }
+
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+
+      .app {
+        padding: 10px;
+      }
+
         .symptomdescr {
             font-weight: bold;
             COLOR: #000;
@@ -132,7 +144,7 @@
             margin-left: 5px;
             margin-right: 5px;
             margin-bottom: 10px;
-            background-size: auto 100% !important;
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
         }
@@ -185,18 +197,25 @@
         }
 
         #footer {
+            border-top: solid 1px #ccc;
+            margin-top: 20px;
             text-align: center;
             padding: 10px;
-            font-size: 1em;
+            font-size: 0.875em;
+        }
+
+        .ui-button {
+          padding-top: 10px;
+          padding-bottom: 10px;
         }
 
         .button-yes {
-            width: 150px !important;
+            width: 100%;
             display: inline-block;
         }
 
         .button-no {
-            width: 150px !important;
+            width: 100%;
             display: inline-block;
         }
 
@@ -206,6 +225,7 @@
         }
 
         .button-inner {
+            width: 48%;
             display: inline-block;
         }
 
@@ -661,69 +681,78 @@
             COVID-PreScreener</h1>
     </div>
 
-    </br>
 
-    <!-- Questionaire -->
-    <div id="container">
-        <div id="questions"></div>
-        <div class="results" id="results"></div>
-    </div>
+    <main class="app">
+      <!-- Questionaire -->
+      <div id="container">
+          <div id="questions"></div>
+          <div class="results" id="results"></div>
+      </div>
 
-    <!-- Symptom Checklist -->
-    <div class="widget">
-        <div id="checklist" class="controlgroup-vertical">
-        </div>
-    </div>
-    </br>
+      <!-- Symptom Checklist -->
+      <div class="widget">
+          <div id="checklist" class="controlgroup-vertical">
+          </div>
+      </div>
+      </br>
 
-    <div id="totaldescr">
-        <p class="info lang-en">If you’re experiencing a life- or limb-threatening emergency, call 911 or the number for your
-            local emergency service. This tool is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a
-            medical professional for serious symptoms or emergencies. </p>
-        <p class="info lang-es">Si tiene una emergencia que amenaza la vida o las extremidades, llame al 911 o al número
-            de
-            su
-            local emergencia Servicio.
-            Esta herramienta no sustituye el consejo, el diagnóstico o el tratamiento médico profesional. Siempre
-            consulte a
-            un médico
-            profesional para síntomas graves o emergencias. </p>
-        <p class="info lang-fr">Si vous vivez une urgence mettant en jeu votre vie ou vos membres, composez le 911 ou le
-            numéro
-            de votre
-            service d'urgence le plus proche.
-            Cet outil ne remplace pas les conseils, le diagnostic ou les traitement médicaux professionnels. Consultez
-            toujours un médecin
-            professionnel pour les symptômes graves ou les urgences.</p>
-        <p class="info lang-hu">Ez NEM egy hivatalos, hitelesített teszt, csak a tünetek felismerését segíti! Amennyiben
-            valójában tüneteket észlel magán jelentkezzen háziorvosánál!
-        </p>
-        <p class="info lang-pl">
-            Jeśli zdarza się sytuacja zagrożenia życia lub kończyny, zadzwoń pod numer 911 lub zadzwoń pod lokalny numer alarmowy. To narzędzie nie zastępuje profesjonalnej porady medycznej, diagnozy ani leczenia. Zawsze skonsultuj się z lekarzem w przypadku poważnych objawów lub nagłych wypadków.</p>
-        <p class="info lang-kr">
-            만약 생명이 위급한 증상을 느끼신다면 지금 바로 119에 연락하십시오. 이 온라인 테스트는 의사 선생님들의 의학적 권고, 진단, 또는 처방을 대신할 수 없습니다. 중증이나 위급한 상황에서는 항상 의사 선생님께 도움을 받으십시오.
-        </p>
-        <p class="info lang-de">
-            Haftungsausschluss. Wenn Sie einen lebens- oder gliedmaßen bedrohlichen Notfall haben, rufen Sie 911 oder die Nummer Ihres örtlichen Rettungsdienstes an. Dieses Tool ist kein Ersatz für professionelle medizinische Beratung, Diagnose oder Behandlung. Bei schwerwiegenden Symptomen oder Notfällen immer einen Arzt konsultieren.
-        </p>
-        <p class="info lang-vi">
-            Tuyên bố từ chối trách nhiệm y tế. Nếu bạn đang có những triệu chứng nguy hiểm đến tính mạng hay nguy hiểm đến tay chân, hãy gọi 911 hay số cấp cứu trong khu vực của bạn để được giúp đỡ gấp. Thông tin từ trang mạng này không phải để thay thế cho tư vấn y tế chuyên nghiệp, chẩn đoán bệnh hay chữa trị bệnh. Hãy luôn hỏi ý kiến bác sĩ khi có triệu chứng nghiêm trọng hay trong trường hợp khẩn cấp.
-        </p>
-    </div>
-    <div id="total" class="total">
-    </div>
+      <div id="totaldescr">
+          <p class="info lang-en">If you’re experiencing a life- or limb-threatening emergency, call 911 or the number for your
+              local emergency service. This tool is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a
+              medical professional for serious symptoms or emergencies. </p>
+          <p class="info lang-es">Si tiene una emergencia que amenaza la vida o las extremidades, llame al 911 o al número
+              de
+              su
+              local emergencia Servicio.
+              Esta herramienta no sustituye el consejo, el diagnóstico o el tratamiento médico profesional. Siempre
+              consulte a
+              un médico
+              profesional para síntomas graves o emergencias. </p>
+          <p class="info lang-fr">Si vous vivez une urgence mettant en jeu votre vie ou vos membres, composez le 911 ou le
+              numéro
+              de votre
+              service d'urgence le plus proche.
+              Cet outil ne remplace pas les conseils, le diagnostic ou les traitement médicaux professionnels. Consultez
+              toujours un médecin
+              professionnel pour les symptômes graves ou les urgences.</p>
+          <p class="info lang-hu">Ez NEM egy hivatalos, hitelesített teszt, csak a tünetek felismerését segíti! Amennyiben
+              valójában tüneteket észlel magán jelentkezzen háziorvosánál!
+              </p>
+              <p class="info lang-pl">Jeśli zdarza się sytuacja zagrożenia życia lub kończyny, zadzwoń pod numer 911 lub zadzwoń pod lokalny numer alarmowy. To narzędzie nie zastępuje profesjonalnej porady medycznej, diagnozy ani leczenia. Zawsze skonsultuj się z lekarzem w przypadku poważnych objawów lub nagłych wypadków.</p>
+               <p class="info lang-kr">
+                 만약 생명이 위급한 증상을 느끼신다면 지금 바로 119에 연락하십시오. 이 온라인 테스트는 의사 선생님들의 의학적 권고, 진단, 또는 처방을 대신할 수 없습니다. 중증이나 위급한 상황에서는 항상 의사 선생님께 도움을 받으십시오.
+               </p>
+               <p class="info lang-de">
+              Haftungsausschluss. Wenn Sie einen lebens- oder gliedmaßen bedrohlichen Notfall haben, rufen Sie 911 oder die Nummer Ihres örtlichen Rettungsdienstes an. Dieses Tool ist kein Ersatz für professionelle medizinische Beratung, Diagnose oder Behandlung. Bei schwerwiegenden Symptomen oder Notfällen immer einen Arzt konsultieren.
+               </p>
+              <p class="info lang-vi">
+                Tuyên bố từ chối trách nhiệm y tế. Nếu bạn đang có những triệu chứng nguy hiểm đến tính mạng hay nguy hiểm đến tay chân, hãy gọi 911 hay số cấp cứu trong khu vực của bạn để được giúp đỡ gấp. Thông tin từ trang mạng này không phải để thay thế cho tư vấn y tế chuyên nghiệp, chẩn đoán bệnh hay chữa trị bệnh. Hãy luôn hỏi ý kiến bác sĩ khi có triệu chứng nghiêm trọng hay trong trường hợp khẩn cấp.
+            </p>
+      </div>
+      <div id="total" class="total">
+      </div>
+    </main>
+
 
     <div id="footer" class="footer">
-        <p>Algorithm created by Sajung Yun, Ph.D & Sijung Yun, Ph.D (Bioinformatics adjunct professors, Johns Hopkins
-            University)
         <p>
-        <p>More info at <a href="https://www.screencovid.org">ScreenCovid.org</a></p>
-        <p>Find testing locations at <a href="https://findcovidtesting.com/">https://findcovidtesting.com</a>
+          Algorithm created by Sajung Yun, Ph.D & Sijung Yun, Ph.D (Bioinformatics adjunct professors, Johns Hopkins University)
+        </p>
+
         <p>
-        <p><a href="https://github.com/tconley/screencovid.com/"><img
-                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="30">Contribute
-            to make this app better.</a>
+          More info at <a href="https://www.screencovid.org">ScreenCovid.org</a>
+        </p>
+
         <p>
+          Find testing locations at <a href="https://findcovidtesting.com/">FindCovidTesting.com</a>
+        </p>
+
+        <p>
+          <svg class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" alt="GitHub"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+          <a href="https://github.com/tconley/screencovid.com/">
+            Contribute to make this app better.
+          </a>
+        </p>
     </div>
 
     <div id="test-area"></div>
