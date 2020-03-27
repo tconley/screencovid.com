@@ -1,0 +1,71 @@
+.active-lang-button {
+  font-weight: 900 !important;
+}
+
+.lang-button-group div a {
+  text-align: left;
+  padding-left: 2.5em;
+  background-color: #efefef !important;
+  border-right-width: 0;
+  border-left-width: 0;
+}
+
+.lang-button-group div a:hover {
+  background-color: #e0e0e0 !important;
+}
+
+.lang-button-group div a::after {
+  background-color: transparent !important;
+  padding-right: 5em;
+  border-radius: 0;
+}
+
+/*
+  Language Icon Styles - Add a new style for every new language 
+
+  Each language can be styled with 1 OR 2 flags
+
+  Flags are in ../images/flags/ and use ISO country codes
+*/
+
+/* English */
+.ui-icon-en:after {
+  background-image: url("../images/flags/us.png"), url("../images/flags/gb.png");
+  background-position: left center, center center;
+}
+
+/* Spanish */
+.ui-icon-es:after {
+  background-image: url("../images/flags/mx.png"), url("../images/flags/es.png");
+  background-position: left center, center center;
+}
+
+/* French */
+.ui-icon-fr:after {
+  background-image: url("../images/flags/fr.png");
+}
+
+/* Hungarian */
+.ui-icon-hu:after {
+  background-image: url("../images/flags/hu.png");
+}
+
+/* Polish */
+.ui-icon-pl:after {
+  background-image: url("../images/flags/pl.png");
+}
+
+/* Korean */
+.ui-icon-kr:after {
+  background-image: url("../images/flags/kr.png");
+}
+
+/* German */
+.ui-icon-de:after {
+  background-image: url("../images/flags/de.png");
+}
+
+/* Vietnamese */
+.ui-icon-vi:after {
+  background-image: url("../images/flags/vn.png");
+}

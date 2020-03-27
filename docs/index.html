@@ -32,6 +32,8 @@
             integrity="sha256-MPgtcamIpCPKRRm1ppJHkvtNBAuE71xcOM+MmQytXi8=" crossorigin="anonymous"></script>
     <script src="gettext.iife.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="css/languages.css"/>
+
     <style>
       html {
         box-sizing: border-box;
@@ -591,7 +593,7 @@
                 lang = 'en';
             }                   
         }
-        
+
         // TODO: use contant values to make sure `list_of_qestions` and TRANSLATIONS are in sync.
         var list_of_questions = [
             {
@@ -668,7 +670,7 @@
                 'id': 'q17',
                 'value': 15,
                 'question': i18n.gettext('Loss of smell or taste?'),
-                'image_url': 'images/blue.svg'
+                'image_url': 'images/no_smell.svg'
             },
             {
                 'id': 'q16',
@@ -695,15 +697,15 @@
              data-expanded-icon="carat-d">
             <div data-role="collapsible" data-collapsed="true">
                 <h3>Languages</h3>
-                <div style="margin: 0; border-radius: 0;" class="controlgroup-vertical">
-                    <a href="#" onclick="refreshLangQuery('en');" class="ui-btn ui-corner-all">English</a>
-                    <a href="#" onclick="refreshLangQuery('es');" class="ui-btn ui-corner-all">Español</a>
-                    <a href="#" onclick="refreshLangQuery('fr');" class="ui-btn ui-corner-all">Français</a>
-                    <a href="#" onclick="refreshLangQuery('hu');" class="ui-btn ui-corner-all">Magyar</a>
-                    <a href="#" onclick="refreshLangQuery('pl');" class="ui-btn ui-corner-all">Polski</a>
-                    <a href="#" onclick="refreshLangQuery('kr');" class="ui-btn ui-corner-all">한국어</a>
-                    <a href="#" onclick="refreshLangQuery('de');" class="ui-btn ui-corner-all">Deutsche</a>
-                    <a href="#" onclick="refreshLangQuery('vi');" class="ui-btn ui-corner-all">Tiếng Việt</a>
+                <div style="margin: 0; border-radius: 0;" class="controlgroup-vertical lang-button-group">
+                    <a href="#" onclick="refreshLangQuery('en');" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-en">English</a>
+                    <a href="#" onclick="refreshLangQuery('es');" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-es">Español</a>
+                    <a href="#" onclick="refreshLangQuery('fr');" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-fr">Français</a>
+                    <a href="#" onclick="refreshLangQuery('hu');" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-hu">Magyar</a>
+                    <a href="#" onclick="refreshLangQuery('pl');" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-pl">Polski</a>
+                    <a href="#" onclick="refreshLangQuery('kr');" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-kr">한국어</a>
+                    <a href="#" onclick="refreshLangQuery('de');" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-de">Deutsche</a>
+                    <a href="#" onclick="refreshLangQuery('vi');" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-vi">Tiếng Việt</a>
                 </div>
             </div>
         </div>
@@ -713,6 +715,9 @@
     </div>
 
     <script>
+        // Style the selected language's respective button in the side-panel
+        $(".ui-icon-" + lang).addClass("active-lang-button");
+
         function refreshLangQuery(lang) {
             window.location.href = window.location.pathname + "?" + $.param({'lang': lang})
         }
