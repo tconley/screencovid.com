@@ -69,3 +69,7 @@
 .ui-icon-vi:after {
   background-image: url("../images/flags/vn.png");
 }
+/* Indian */
+.ui-icon-in:after {
+  background-image: url("../images/flags/in.png");
+}
